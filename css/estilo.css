@@ -1,0 +1,346 @@
+@font-face {
+  font-family: 'SpiderMan';
+  src: url('../tipografia/spider-man.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+  body{
+    background-color: rgb(240, 214, 238);
+    
+}
+
+main{
+  margin-top: 120px;
+}
+
+nav{
+  background-color:  #6d327986;
+}
+
+.nav-link, .navbar-nav .nav-link.active{
+  color: white;
+}
+
+.nav-link:hover, .navbar-nav .nav-link.active:hover{
+  color: #6d3279;
+}
+
+.dropdown-menu{
+  background-color: #b28ab9;
+  color: #fff;
+}
+
+.container{
+  margin-top: 70px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+h1{
+  font-family: 'SpiderMan', sans-serif;
+  font-size: 2rem;
+  margin: 0 20px 0 20px;
+  text-transform: uppercase;
+  color: #efb4ce;
+  text-shadow: 2px 3px 0 #d38faf;
+  text-align: center;
+}
+
+h2{
+  font-family: 'SpiderMan', sans-serif;
+  font-size: 15rem;
+  text-transform: uppercase;
+  color: #efb4ce;
+  text-shadow: 4px 6px 0 #d38faf;
+  text-align: center;
+}
+
+.titulo_comic{
+  font-size: 5rem;
+  text-shadow: none;
+  color: #6d3279;
+}
+
+.card-body h3{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #6d3279;
+}
+
+.banner_1 img{
+  width: 200px;
+}
+
+.presentacion{
+    display: flex;
+    align-items: center;
+}
+
+.personajesCirculos img {
+  border-radius: 50%;
+  margin-left: 80px;
+  margin-bottom: 20px;
+  box-shadow: 4px 6px 0 #d38faf;
+  padding: 0;
+}
+
+.personajesCirculos .dosimg img{
+  width: 100px;
+}
+
+.personajesCirculos img {
+  width: 120px; 
+}
+
+
+.personajes{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+    justify-content: center;
+    margin-bottom: 150px;
+}
+
+.personajes a,
+.error .spider_circulo, .circulo{
+  text-decoration: none;
+  width: 200px;
+  height: 200px;
+  background-color: #d38faf;
+  border-radius: 50%;
+  margin: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error .spider_circulo{
+  background-color: #6d3279;
+}
+
+.personajes img:hover {
+  transform: scale(1.2); 
+}
+
+.personajes p{
+  text-align: center;
+  color: #6d3279;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-top: 120px;
+}
+
+.sobreNosotros{
+  background-color: #efb4ce;
+  margin: 140px 0;
+  padding: 70px;
+}
+
+h3{
+  color: #6d3279;
+  font-family: 'SpiderMan', sans-serif;
+  font-size: 3rem;
+  text-transform: uppercase;
+}
+
+.cont_personaje h2{
+  margin-bottom: 100px;
+}
+
+.footer{
+    background-image: url(../img/banner.png);
+    background-size:contain; 
+    background-repeat:repeat; 
+    background-attachment: fixed;
+    padding: 30px;
+   
+}
+
+.contenedor_comic, .cont_info_form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.div_comic{
+  width: 60%;
+}
+
+.div_comic img{
+  width: 400px;
+}
+
+.btn{
+  background-color: #6d3279;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  width: 100%; 
+} 
+    
+.btn:hover {
+background-color: #d38faf;
+}
+
+.btn_compra{
+  width: 40%;
+}
+
+.formulario, .cont{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedor_form, .error, .cont_info_form {
+  width: 60%;
+  margin: 20px;
+  background-color: #d1a0c1;
+  padding: 20px;
+  border-radius: 30px;
+  box-shadow: 20px 0px 10px rgba(27, 27, 27, 0.1);
+}
+
+.formulario h2 {
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 2rem;
+  text-shadow: none;
+  color: #6d3279;
+}
+
+.cont_info_form h2{
+  font-size: 5rem;
+  text-shadow: none;
+  color: #6d3279;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #6d3279;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box; 
+
+}
+
+textarea {
+  width: 100%;
+  max-width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+  height: 100px; 
+}
+
+.btn_sub{
+  width: 40%;
+}
+
+.error_contenedor, .cont, .formulario{
+  height: 65vh;
+}
+
+.error h2{
+  color: #6d3279;
+  font-size: 8rem;
+}
+
+strong{
+  color: #6d3279;
+}
+
+.error_contenedor, .error, .cont_form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+h2{
+    font-size: 8rem;
+  }
+  .contenedor_banner{
+    margin: 0;
+  }
+
+  .personajes_h2{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container{
+    max-width: 813px;
+  }
+
+  .sobreNosotros{
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .sobreNosotros div{
+    width: 90%;
+  }
+
+  .alumnas{
+    display: flex;
+    flex-direction: column;
+  }
+
+}
+
+@media (max-width: 500px){
+  h1{
+    font-size: 1.5rem;
+  }
+  .contenedor_banner h2{
+    font-size: 5rem;
+    text-align: center;
+  }
+
+  .personajesCirculos{
+    display: none;
+  }
+
+  .contenedor_form h2{
+    font-size: 1.5rem;
+  }
+
+  .contenedor_form{
+    margin: 0;
+  }
+
+  .btn_sub{
+    width: 90%;
+  }
+}
