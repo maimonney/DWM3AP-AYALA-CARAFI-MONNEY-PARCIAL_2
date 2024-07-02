@@ -6,7 +6,7 @@ $editoriales = (new Editorial())->catalogo_editorial();
 <form class="row g-3" action="actions/accAgregarSerie.php" method="POST" enctype="multipart/form-data">
     <div class="col-md-6 mb-3">
         <label for="nombre" class="form-label">Nombre</label>
-        <input type="text" class="form-control" id="nombre" name="nombre">
+        <input type="text" class="form-control" id="nombre" name="nombre" required>
     </div>
 
     <div class="col-md-6 mb-3">
@@ -21,7 +21,7 @@ $editoriales = (new Editorial())->catalogo_editorial();
 
     <div class="col-md-6 mb-3">
         <label for="editorial" class="form-label">Editorial</label>
-        <select name="editorial" id="editorial" class="form-control">
+        <select name="editorial" id="editorial" class="form-control" required>
             <option value="" selected disabled>Elegir opción</option>
             <?php foreach ($editoriales as $editorial) { ?>
                 <option value="<?= $editorial->getIdEditorial() ?>"><?= $editorial->getNombreEditorial() ?></option>

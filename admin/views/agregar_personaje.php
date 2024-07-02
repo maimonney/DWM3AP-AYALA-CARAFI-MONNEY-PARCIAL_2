@@ -11,7 +11,7 @@ $universos = (new Universo())->catalogo_universo();
 
     <div class="col-md-6 mb-3">
         <label for="alias" class="form-label">Alias</label>
-        <input type="text" class="form-control" id="alias" name="alias">
+        <input type="text" class="form-control" id="alias" name="alias" required>
     </div>
 
     <div class="col-md-6 mb-3">
@@ -26,7 +26,7 @@ $universos = (new Universo())->catalogo_universo();
 
     <div class="col-md-6 mb-3">
         <label for="autor" class="form-label">Autor</label>
-        <select name="autor" id="autor" class="form-control">
+        <select name="autor" id="autor" class="form-control" required>
             <option value="" selected disabled>Elegir opción</option>
             <?php foreach ($autores as $autor) { ?>
                 <option value="<?= $autor->getId() ?>"><?= $autor->getNombre() ?></option>
@@ -46,7 +46,7 @@ $universos = (new Universo())->catalogo_universo();
 
     <div class="col-md-6 mb-3">
         <label for="universo" class="form-label">Universo</label>
-        <select name="universo" id="universo" class="form-control">
+        <select name="universo" id="universo" class="form-control" required>
             <option value="" selected disabled>Elegir universo</option>
             <?php foreach ($universos as $universo) { ?>
                 <option value="<?= $universo->getId() ?>"><?= $universo->getNombre() ?></option>

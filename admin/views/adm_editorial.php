@@ -8,6 +8,7 @@ $editoriales = (new Editorial())->catalogo_editorial();
     <div class="col">
         <h1 class="text-center mb-5 fw-bold">Administración de Editoriales</h1>
         <div class="row m-5 d-flex align-items-center">
+        <?= (new Alerta())-> get_alertas() ?>
             <table class="table">
                 <thead>
                     <tr>

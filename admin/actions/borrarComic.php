@@ -7,6 +7,7 @@ try {
         $comic = new Comic();
         $comic->setIdComic($id_comic);
         $comic->delete();
+        (new Alerta())->add_alerta("Se borro corectamente", "danger");
         header("Location: ../index.php?sec=adm_comic");
     } else {
         throw new Exception("No se encontró un comic con esa id");

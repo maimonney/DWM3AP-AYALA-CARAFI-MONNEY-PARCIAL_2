@@ -6,6 +6,7 @@ try {
         $personaje = new Personaje();
         $personaje->setId($id);
         $personaje->delete();
+        (new Alerta())->add_alerta("Se borro corectamente", "danger");
         header("Location: ../index.php?sec=adm_personaje");
     } else {
         throw new Exception("No se encontró un personaje con esa id");

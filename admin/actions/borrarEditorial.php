@@ -6,6 +6,7 @@ try {
         $editorial = new Editorial();
         $editorial->setIdEditorial($id);
         $editorial->delete();
+        (new Alerta())->add_alerta("Se borro corectamente", "danger");
         header("Location: ../index.php?sec=adm_editorial");
     } else {
         throw new Exception("No se encontró una editorial con esa id");

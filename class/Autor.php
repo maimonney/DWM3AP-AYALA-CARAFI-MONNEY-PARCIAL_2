@@ -52,12 +52,12 @@ class Autor {
         return $this;
     }
 
-    public function autor_id(int $id) {
+    public function autor_id(int $id_autor) {
         $conexion = new Conexion();
         $db = $conexion->getConexion();
-        $query = "SELECT * FROM autor WHERE id_autor = :id";
+        $query = "SELECT * FROM autor WHERE id_autor = :id_autor";
         $PDOStament = $db->prepare($query);
-        $PDOStament->bindParam(':id', $id, PDO::PARAM_INT);
+        $PDOStament->bindParam(':id_autor', $id_autor, PDO::PARAM_INT);
         $PDOStament->setFetchMode(PDO::FETCH_CLASS, self::class);
         $PDOStament->execute();
 
@@ -90,8 +90,29 @@ class Autor {
         ]);
     }
 
-    public function delete()
+    public function edit($id_autor, $nombre_autor, $alias_autor, $nacimiento_autor, $biografia_autor)
     {
+        $conexion = new Conexion();
+        $db = $conexion->getConexion();
+        $query = "UPDATE autor SET
+            nombre_autor = :nombre,
+            alias_autor = :alias,
+            nacimiento_autor = :nacimiento,
+            biografia_autor = :biografia 
+            WHERE id_autor = :id";
+    
+        $PDOStatement = $db->prepare($query);
+        $PDOStatement->execute([
+            'nombre' => htmlspecialchars($nombre_autor),
+            'alias' => htmlspecialchars($alias_autor),
+            'nacimiento' => htmlspecialchars($nacimiento_autor),
+            'biografia' => htmlspecialchars($biografia_autor),
+            'id' => htmlspecialchars($id_autor),
+        ]);
+    }
+    
+
+    public function delete() {
         $conexion = new Conexion();
         $db = $conexion->getConexion();
         $query = "DELETE FROM autor WHERE id_autor = :id";
@@ -99,25 +120,6 @@ class Autor {
         $statement->bindParam(':id', $this->id_autor, PDO::PARAM_INT);
         return $statement->execute();
     }
+    
 
-    public function edit($nombre_autor, $alias_autor, $nacimiento_autor, $biografia_autor)
-    {
-        $conexion = new Conexion();
-        $db = $conexion->getConexion();
-        $query = "UPDATE autor SET
-            nombre_autor = :nombre,
-            alias_autor = :alias_autor,
-            nacimiento_autor = :nacimiento,
-            biografia_autor = :biografia 
-            WHERE id_autor = :id";
-
-        $PDOStatement = $db->prepare($query);
-        $PDOStatement->execute([
-            'nombre' => $nombre_autor,
-            'alias_autor' => $alias_autor,
-            'nacimiento' => $nacimiento_autor,
-            'biografia' => $biografia_autor,
-            'id' => $this->id_autor,
-        ]);
-    }
 }

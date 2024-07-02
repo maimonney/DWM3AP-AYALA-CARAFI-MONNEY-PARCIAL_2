@@ -25,6 +25,9 @@
                     </ul>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.php?sec=carrito">Carrito</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="index.php?sec=formulario">Contacto</a>
                 </li>
             </ul>

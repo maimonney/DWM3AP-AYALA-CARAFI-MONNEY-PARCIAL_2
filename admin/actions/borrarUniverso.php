@@ -6,6 +6,7 @@ try {
         $universo = new Universo();
         $universo->setId($id);
         $universo->delete();
+        (new Alerta())->add_alerta("Se borro corectamente", "danger");
         header("Location: ../index.php?sec=adm_universo");
     } else {
         throw new Exception("No se encontró una universo con esa id");

@@ -53,19 +53,26 @@ class Editorial {
         $PDOStatement->execute(['id' => $this->id_editorial]);
     }
 
-    public function edit($nombre_editorial, $pais_origen_editorial, $fundacion_editorial, $descripcion_editorial) {
+    public function edit($id_editorial, $nombre_editorial, $pais_origen_editorial, $fundacion_editorial, $descripcion_editorial) {
         $conexion = new Conexion();
         $db = $conexion->getConexion();
-        $query = "UPDATE editorial SET nombre_editorial = :nombre, pais_origen_editorial = :pais_origen, fundacion_editorial = :fundacion, descripcion_editorial = :descripcion WHERE id_editorial = :id";
+        $query = "UPDATE editorial SET
+            nombre_editorial = :nombre,
+            pais_origen_editorial = :pais_origen,
+            fundacion_editorial = :fundacion,
+            descripcion_editorial = :descripcion
+            WHERE id_editorial = :id";
+    
         $PDOStatement = $db->prepare($query);
         $PDOStatement->execute([
-            'nombre' => $nombre_editorial,
-            'pais_origen' => $pais_origen_editorial,
-            'fundacion' => $fundacion_editorial,
-            'descripcion' => $descripcion_editorial,
-            'id' => $this->id_editorial,
+            'nombre' => htmlspecialchars($nombre_editorial),
+            'pais_origen' => htmlspecialchars($pais_origen_editorial),
+            'fundacion' => htmlspecialchars($fundacion_editorial),
+            'descripcion' => htmlspecialchars($descripcion_editorial),
+            'id' => htmlspecialchars($id_editorial),
         ]);
     }
+    
 
     /**
      * Get the value of id_editorial

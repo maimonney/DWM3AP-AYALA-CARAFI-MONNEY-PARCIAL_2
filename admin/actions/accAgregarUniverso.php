@@ -12,6 +12,7 @@ try {
     $universo->setDescripcion($descripcion_universo);
 
     $universo->insert();
+    (new Alerta())->add_alerta("Se agrego corectamente", "success");
 
     header("Location: ../index.php?sec=adm_universo");
     exit();

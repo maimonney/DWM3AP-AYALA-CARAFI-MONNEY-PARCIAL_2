@@ -80,23 +80,24 @@ class Universo
     }
 
     public function edit($id_universo, $nombre_universo, $creacion_universo, $descripcion_universo)
-    {
-        $conexion = new Conexion();
-        $db = $conexion->getConexion();
-        $query = "UPDATE universo SET
-            nombre_universo = :nombre,
-            creacion_universo = :creacion,
-            descripcion_universo = :descripcion
-            WHERE id_universo = :id";
+{
+    $conexion = new Conexion();
+    $db = $conexion->getConexion();
+    $query = "UPDATE universo SET
+        nombre_universo = :nombre,
+        creacion_universo = :creacion,
+        descripcion_universo = :descripcion
+        WHERE id_universo = :id";
 
-        $PDOStatement = $db->prepare($query);
-        $PDOStatement->execute([
-            'nombre' => htmlspecialchars($nombre_universo),
-            'creacion' => htmlspecialchars($creacion_universo),
-            'descripcion' => htmlspecialchars($descripcion_universo),
-            'id' => htmlspecialchars($id_universo),
-        ]);
-    }
+    $PDOStatement = $db->prepare($query);
+    $PDOStatement->execute([
+        'nombre' => htmlspecialchars($nombre_universo),
+        'creacion' => htmlspecialchars($creacion_universo),
+        'descripcion' => htmlspecialchars($descripcion_universo),
+        'id' => htmlspecialchars($id_universo),
+    ]);
+}
+
 
     public function insert()
     {
@@ -107,19 +108,6 @@ class Universo
         $statement->bindParam(':nombre', $this->nombre_universo, PDO::PARAM_STR);
         $statement->bindParam(':creacion', $this->creacion_universo, PDO::PARAM_STR);
         $statement->bindParam(':descripcion', $this->descripcion_universo, PDO::PARAM_STR);
-        return $statement->execute();
-    }
-
-    public function update()
-    {
-        $conexion = new Conexion();
-        $db = $conexion->getConexion();
-        $query = "UPDATE universo SET nombre_universo = :nombre, creacion_universo = :creacion, descripcion_universo = :descripcion WHERE id_universo = :id";
-        $statement = $db->prepare($query);
-        $statement->bindParam(':nombre', $this->nombre_universo, PDO::PARAM_STR);
-        $statement->bindParam(':creacion', $this->creacion_universo, PDO::PARAM_STR);
-        $statement->bindParam(':descripcion', $this->descripcion_universo, PDO::PARAM_STR);
-        $statement->bindParam(':id', $this->id_universo, PDO::PARAM_INT);
         return $statement->execute();
     }
 

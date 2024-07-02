@@ -68,7 +68,7 @@ class Serie
         $PDOStatement->execute(['id' => $this->id_serie]);
     }
 
-    public function edit($nombre_serie, $descripcion_serie, $fecha_inicio_serie, $editorial_id_serie)
+    public function edit($id_serie, $nombre_serie, $descripcion_serie, $fecha_inicio_serie, $editorial_id_serie)
     {
         $conexion = new Conexion();
         $db = $conexion->getConexion();
@@ -78,16 +78,18 @@ class Serie
             fecha_inicio_serie = :fecha,
             editorial_id_serie = :editorial 
             WHERE id_serie = :id";
-
+    
         $PDOStatement = $db->prepare($query);
         $PDOStatement->execute([
             'nombre' => $nombre_serie,
             'descripcion' => $descripcion_serie,
             'fecha' => $fecha_inicio_serie,
             'editorial' => $editorial_id_serie,
-            'id' => $this->id_serie,
+            'id' => $id_serie,
         ]);
     }
+    
+
 
     /**
      * Get the value of id_serie

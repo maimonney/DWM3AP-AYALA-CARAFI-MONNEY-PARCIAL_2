@@ -5,7 +5,6 @@ $personajes = (new Personaje())->catalogo_personaje();
 $autores = (new Autor())->catalogo_autor();
 $editoriales = (new Editorial())->catalogo_editorial();
 $universos = (new Universo())->catalogo_universo();
-$artistas = (new Artista())->catalogo_artista();
 $series = (new Serie())->catalogo_serie();
 ?>
 
@@ -77,19 +76,6 @@ $series = (new Serie())->catalogo_serie();
                             <option value="<?= $autor->getId() ?>"
                                 <?= $autor->getId() == $comic->getAutorIdComic() ? 'selected' : '' ?>>
                                 <?= htmlspecialchars($autor->getNombre()) ?>
-                            </option>
-                        <?php } ?>
-                    </select>
-                </div>
-
-                <div class="col-md-6 mb-3">
-                    <label for="artista" class="form-label">Artista</label>
-                    <select name="artistas_id_comic" id="artista" class="form-control" required>
-                        <option value="" disabled>Elegir opción</option>
-                        <?php foreach ($artistas as $artista) { ?>
-                            <option value="<?= $artista->getIdArtista() ?>"
-                                <?= $artista->getIdArtista() == $comic->getArtistasIdComic() ? 'selected' : '' ?>>
-                                <?= htmlspecialchars($artista->getNombreArtista()) ?>
                             </option>
                         <?php } ?>
                     </select>

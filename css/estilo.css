@@ -286,6 +286,42 @@ strong{
   align-items: center;
 }
 
+.adm_borrar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.adm_borrar h2{
+  font-size: 5rem;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-bottom: 10px;
+}
+
+.adm_borrar h3{
+  font-size: 3rem;
+}
+
+.cont_btn_adm{
+  display: flex;
+  margin: 0 20px 0 20px;
+}
+
+.cont_btn_adm a{
+  width: 200px;
+  margin: 20px;
+}
+
+.cont_login{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+}
+
+
 @media (max-width: 900px) {
 h2{
     font-size: 8rem;

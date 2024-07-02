@@ -10,7 +10,6 @@
             <a href="index.php?sec=adm_universo">Universos</a>
             <a href="index.php?sec=adm_editorial">Editorial</a>
             <a href="index.php?sec=adm_autor">Autor</a>
-            <a href="index.php?sec=adm_artista">Artista</a>
         </div>
     </div>
 </div>

@@ -8,6 +8,7 @@ try {
     $editorial_id_serie = htmlspecialchars($_POST["editorial"]);
 
     (new Serie())->insert($nombre_serie, $descripcion_serie, $fecha_inicio_serie, $editorial_id_serie);
+    (new Alerta())->add_alerta("Se agrego corectamente", "success");
 
     header("Location: ../index.php?sec=adm_serie");
     exit(); 

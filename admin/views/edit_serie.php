@@ -9,7 +9,9 @@ $editoriales = (new Editorial())->catalogo_editorial();
         <h1 class="text-center mb-5 fw-bold">Edición de Serie</h1>
 
         <div class="row mb-5 d-flex align-items-center">
-            <form class="row g-3" action="actions/editarSerie.php" method="POST" enctype="multipart/form-data">
+            <form class="row g-3" action="actions/editarSerie.php" method="POST">
+
+                <input type="hidden" name="id" value="<?= htmlspecialchars($series->getIdSerie()) ?>">
 
                 <div class="col-md-6 mb-3">
                     <label for="nombre" class="form-label">Nombre</label>

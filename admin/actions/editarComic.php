@@ -23,7 +23,6 @@ try {
         htmlspecialchars($_POST["volumen_comic"]),
         htmlspecialchars($_POST["titulo_comic"]),
         htmlspecialchars($_POST["personaje_id_comic"]),
-        htmlspecialchars($_POST["artistas_id_comic"]),
         htmlspecialchars($_POST["editorial_id_comic"]),
         $nombreImagen,
         htmlspecialchars($_POST["publicacion_fecha"]),
@@ -32,7 +31,8 @@ try {
         htmlspecialchars($_POST["bajada"]),
         htmlspecialchars($_POST["universo_id_comic"])
     );
-
+    (new Alerta())->add_alerta("Se pudo editar corectamente", "success");
+    
     header("Location: ../index.php?sec=adm_comic");
 } catch (Exception $e) {
     echo $e->getMessage();

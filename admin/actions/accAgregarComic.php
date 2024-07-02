@@ -6,7 +6,6 @@ try {
     $serie_id_comic = htmlspecialchars($_POST["serie"]);
     $volumen_comic = htmlspecialchars($_POST["volumen"]);
     $personaje_id_comic = htmlspecialchars($_POST["personaje"]);
-    $artistas_id_comic = htmlspecialchars($_POST["artista"]);
     $editorial_id_comic = htmlspecialchars($_POST["editorial"]);
     $publicacion_fecha = htmlspecialchars($_POST["fecha"]);
     $autor_id_comic = htmlspecialchars($_POST["autor"]);
@@ -20,7 +19,10 @@ try {
         $portada_comic = "default_image.jpg"; 
     }
 
-    (new Comic())->insert($serie_id_comic, $volumen_comic, $titulo_comic, $personaje_id_comic, $artistas_id_comic, $editorial_id_comic, $portada_comic, $publicacion_fecha, $autor_id_comic, $precio_comic, $bajada, $universo_id_comic);
+    (new Comic())->insert($serie_id_comic, $volumen_comic, $titulo_comic, $personaje_id_comic, $editorial_id_comic, $portada_comic, $publicacion_fecha, $autor_id_comic, $precio_comic, $bajada, $universo_id_comic);
+    (new Alerta())->add_alerta("Se agrego corectamente", "success");
+
+
 
     header("Location: ../index.php?sec=adm_comic");
     exit(); 

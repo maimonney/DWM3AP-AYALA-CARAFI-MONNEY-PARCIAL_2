@@ -17,6 +17,7 @@ try {
     }
 
     (new Personaje())->insert($nombre, $alias, $descripcion, $autor_id, $poderes_habilidades, $imagen, $universo_id, $fecha_creacion);
+    (new Alerta())->add_alerta("Se agrego corectamente", "success");
 
     header("Location: ../index.php?sec=adm_personaje");
     exit(); 

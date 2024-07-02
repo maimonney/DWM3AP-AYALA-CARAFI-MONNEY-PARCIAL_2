@@ -6,7 +6,6 @@ class Comic
         public $volumen_comic;
         public $titulo_comic;
         public $personaje_id_comic;
-        public $artistas_id_comic;
         public $editorial_id_comic;
         public $portada_comic;
         public $publicacion_fecha;
@@ -15,18 +14,23 @@ class Comic
         public $bajada;
         public $universo_id_comic;
 
+        // protected static $contador = 0;
 
-        public function insert($serie_id_comic, $volumen_comic, $titulo_comic, $personaje_id_comic, $artistas_id_comic, $editorial_id_comic, $portada_comic, $publicacion_fecha, $autor_id_comic, $precio_comic, $bajada, $universo_id_comic)
+        // public function __construct(){
+        //         echo "<h1> Cantidad: ".self::$contador."</h1>";
+        //         self::$contador++;
+        // }
+
+        public function insert($serie_id_comic, $volumen_comic, $titulo_comic, $personaje_id_comic, $editorial_id_comic, $portada_comic, $publicacion_fecha, $autor_id_comic, $precio_comic, $bajada, $universo_id_comic)
         {
                 $conexion = (new Conexion())->getConexion();
-                $query = 'INSERT INTO `comic` (`id`, `serie_id_comic`, `volumen_comic`, `titulo_comic`, `personaje_id_comic`, `artistas_id_comic`, `editorial_id_comic`, `portada_comic`, `publicacion_fecha`, `autor_id_comic`, `precio_comic`, `bajada`, `universo_id_comic`) VALUES (NULL, :serie, :volumen, :titulo, :personaje, :artista, :editorial, :portada, :fecha, :autor, :precio, :bajada, :universo)';
+                $query = 'INSERT INTO `comic` (`serie_id_comic`, `volumen_comic`, `titulo_comic`, `personaje_id_comic`, `editorial_id_comic`, `portada_comic`, `publicacion_fecha`, `autor_id_comic`, `precio_comic`, `bajada`, `universo_id_comic`) VALUES (:serie, :volumen, :titulo, :personaje, :editorial, :portada, :fecha, :autor, :precio, :bajada, :universo)';
                 $PDOStament = $conexion->prepare($query);
                 $PDOStament->execute([
                         'titulo' => htmlspecialchars($titulo_comic),
                         'serie' => htmlspecialchars($serie_id_comic),
                         'volumen' => htmlspecialchars($volumen_comic),
                         'personaje' => htmlspecialchars($personaje_id_comic),
-                        'artista' => htmlspecialchars($artistas_id_comic),
                         'editorial' => htmlspecialchars($editorial_id_comic),
                         'portada' => htmlspecialchars($portada_comic),
                         'fecha' => htmlspecialchars($publicacion_fecha),
@@ -40,7 +44,7 @@ class Comic
 
         public function getNombrePersonaje()
         {
-                return $this->nombre;
+                return $this->alias;
         }
         public function getNombreSerie()
         {
@@ -56,10 +60,6 @@ class Comic
         {
                 return $this->nombre_universo;
         }
-        public function getNombreArtista()
-        {
-                return $this->nombre_artista;
-        }
         public function getNombreEditorial()
         {
                 return $this->nombre_editorial;
@@ -69,13 +69,12 @@ class Comic
         {
                 $conexion = new Conexion();
                 $db = $conexion->getConexion();
-                $query = "SELECT comic.*, p.nombre, s.nombre_serie, a.nombre_autor, u.nombre_universo, art.nombre_artista, e.nombre_editorial 
+                $query = "SELECT comic.*, p.alias, s.nombre_serie, a.nombre_autor, u.nombre_universo, e.nombre_editorial 
           FROM comic
           LEFT JOIN personaje p ON comic.personaje_id_comic = p.id
           LEFT JOIN serie s ON comic.serie_id_comic = s.id_serie
           LEFT JOIN autor a ON comic.autor_id_comic = a.id_autor
           LEFT JOIN universo u ON comic.universo_id_comic = u.id_universo
-          LEFT JOIN artista art ON comic.artistas_id_comic = art.id_artista
           LEFT JOIN editorial e ON comic.editorial_id_comic = e.id_editorial";
 
                 $PDOStament = $db->prepare($query);
@@ -114,7 +113,7 @@ class Comic
                 return null;
         }
 
-        public function edit($id_comic, $serie_id_comic, $volumen_comic, $titulo_comic, $personaje_id_comic, $artistas_id_comic, $editorial_id_comic, $portada_comic, $publicacion_fecha, $autor_id_comic, $precio_comic, $bajada, $universo_id_comic)
+        public function edit($id_comic, $serie_id_comic, $volumen_comic, $titulo_comic, $personaje_id_comic, $editorial_id_comic, $portada_comic, $publicacion_fecha, $autor_id_comic, $precio_comic, $bajada, $universo_id_comic)
         {
                 $conexion = (new Conexion())->getConexion();
                 $query = "UPDATE comic SET 
@@ -122,7 +121,6 @@ class Comic
                         volumen_comic = :volumen,
                         titulo_comic = :titulo,
                         personaje_id_comic = :personaje,
-                        artistas_id_comic = :artista,
                         editorial_id_comic = :editorial,
                         portada_comic = :portada,
                         publicacion_fecha = :fecha,
@@ -139,7 +137,6 @@ class Comic
                         'volumen' => htmlspecialchars($volumen_comic),
                         'titulo' => htmlspecialchars($titulo_comic),
                         'personaje' => htmlspecialchars($personaje_id_comic),
-                        'artista' => htmlspecialchars($artistas_id_comic),
                         'editorial' => htmlspecialchars($editorial_id_comic),
                         'portada' => htmlspecialchars($portada_comic),
                         'fecha' => htmlspecialchars($publicacion_fecha),
@@ -249,24 +246,6 @@ class Comic
         public function setPersonajeIdComic($personaje_id_comic): self
         {
                 $this->personaje_id_comic = $personaje_id_comic;
-
-                return $this;
-        }
-
-        /**
-         * Get the value of artistas_id_comic
-         */
-        public function getArtistasIdComic()
-        {
-                return $this->artistas_id_comic;
-        }
-
-        /**
-         * Set the value of artistas_id_comic
-         */
-        public function setArtistasIdComic($artistas_id_comic): self
-        {
-                $this->artistas_id_comic = $artistas_id_comic;
 
                 return $this;
         }

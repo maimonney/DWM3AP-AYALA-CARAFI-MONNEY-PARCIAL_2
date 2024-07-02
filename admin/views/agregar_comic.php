@@ -3,14 +3,13 @@ $personajes = (new Personaje())->catalogo_personaje();
 $autores = (new Autor())->catalogo_autor();
 $editoriales = (new Editorial())->catalogo_editorial();
 $universos = (new Universo())->catalogo_universo();
-$artistas = (new Artista())->catalogo_artista();
 $series = (new Serie())->catalogo_serie();
 ?>
 <h2>Agregar un comic</h2>
 <form class="row g-3" action="actions/accAgregarComic.php" method="POST" enctype="multipart/form-data">
     <div class="col-md-6 mb-3">
         <label for="titulo" class="form-label">Titulo</label>
-        <input type="text" class="form-control" id="titulo" name="titulo">
+        <input type="text" class="form-control" id="titulo" name="titulo" required>
     </div>
 
     <div class="col-md-6 mb-3">
@@ -30,20 +29,20 @@ $series = (new Serie())->catalogo_serie();
 
     <div class="col-md-6 mb-3">
         <label for="portada" class="form-label">Imagen</label>
-        <input class="form-control" type="file" id="portada" name="portada">
+        <input class="form-control" type="file" id="portada" name="portada" required>
     </div>
 
     <div class="col-md-6 mb-3">
         <label for="bajada" class="form-label">Descripción</label>
-        <input type="text" class="form-control" id="bajada" name="bajada">
+        <input type="text" class="form-control" id="bajada" name="bajada" required>
     </div>
 
     <div class="col-md-6 mb-3">
         <label for="personaje" class="form-label">Personaje principal</label>
-        <select name="personaje" id="personaje" class="form-control">
+        <select name="personaje" id="personaje" class="form-control" required>
             <option value="" selected disabled>Elegir opción</option>
             <?php foreach ($personajes as $personaje) { ?>
-                <option value="<?= $personaje->getId() ?>"><?= $personaje->getNombre() ?></option>
+                <option value="<?= $personaje->getId() ?>"><?= $personaje->getAlias() ?></option>
             <?php } ?>
         </select>
     </div>
@@ -59,18 +58,8 @@ $series = (new Serie())->catalogo_serie();
     </div>
 
     <div class="col-md-6 mb-3">
-        <label for="artista" class="form-label">Artista</label>
-        <select name="artista" id="artista" class="form-control">
-            <option value="" selected disabled>Elegir opción</option>
-            <?php foreach ($artistas as $artista) { ?>
-                <option value="<?= $artista->getIdArtista() ?>"><?= $artista->getNombreArtista() ?></option>
-            <?php } ?>
-        </select>
-    </div>
-
-    <div class="col-md-6 mb-3">
         <label for="editorial" class="form-label">Editorial</label>
-        <select name="editorial" id="editorial" class="form-control">
+        <select name="editorial" id="editorial" class="form-control" required>
             <option value="" selected disabled>Elegir opción</option>
             <?php foreach ($editoriales as $editorial) { ?>
                 <option value="<?= $editorial->getIdEditorial() ?>"><?= $editorial->getNombreEditorial() ?></option>
@@ -85,7 +74,7 @@ $series = (new Serie())->catalogo_serie();
 
     <div class="col-md-6 mb-3">
         <label for="universo" class="form-label">Universo</label>
-        <select name="universo" id="universo" class="form-control">
+        <select name="universo" id="universo" class="form-control" required>
             <option value="" selected disabled>Elegir universo</option>
             <?php foreach ($universos as $universo) { ?>
                 <option value="<?= $universo->getId() ?>"><?= $universo->getNombre() ?></option>

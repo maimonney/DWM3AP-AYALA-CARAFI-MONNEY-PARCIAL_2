@@ -8,6 +8,7 @@ $comics = (new Comic())->catalogo_comic();
     <div class="col">
         <h1 class="text-center mb-5 fw-bold">Administración de Comics</h1>
         <div class="row m-5 d-flex align-items-center">
+        <?= (new Alerta())-> get_alertas() ?>
             <table class="table">
                 <thead>
                     <tr>
@@ -18,7 +19,6 @@ $comics = (new Comic())->catalogo_comic();
                         <th scope="col">Serie</th>
                         <th scope="col">Fecha de publicacion</th>
                         <th scope="col">Autor</th>
-                        <th scope="col">Artista</th>
                         <th scope="col">Editorial</th>
                         <th scope="col">Descripcion</th>
                         <th scope="col">Universo</th>
@@ -31,18 +31,17 @@ $comics = (new Comic())->catalogo_comic();
                         ?>
                         <tr>
                             <td><img src="<?= "../img/comic/" . htmlspecialchars($imagen) ?>" alt="Imagen del comic"
-                                    class="img-fluid rounded shadow-sm"></td>
+                                    class="img-fluid rounded shadow-sm" width="250"></td>
                             <td><?= htmlspecialchars($Comic->getTituloComic()) ?></td>
                             <td><?= htmlspecialchars($Comic->getNombrePersonaje()) ?></td>
                             <td><?= htmlspecialchars($Comic->getVolumenComic()) ?></td>
                             <td><?= htmlspecialchars($Comic->getNombreSerie()) ?></td>
                             <td><?= htmlspecialchars($Comic->getPublicacionFecha()) ?></td>
                             <td><?= htmlspecialchars($Comic->getNombreAutor()) ?></td>
-                            <td><?= htmlspecialchars($Comic->getNombreArtista()) ?></td>
                             <td><?= htmlspecialchars($Comic->getNombreEditorial()) ?></td>
                             <td><?= htmlspecialchars($Comic->getBajada()) ?></td>
                             <td><?= htmlspecialchars($Comic->getNombreUniverso()) ?></td>
-                            <td><?= htmlspecialchars($Comic->getPrecioComic()) ?></td>
+                            <td width="120">$ <?= htmlspecialchars($Comic->getPrecioComic()) ?></td>
 
                             <td>
                                 <a href="index.php?sec=edit_comic&id=<?= htmlspecialchars($Comic->getIdComic()) ?>"

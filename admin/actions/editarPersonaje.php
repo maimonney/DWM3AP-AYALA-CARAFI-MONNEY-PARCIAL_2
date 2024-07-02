@@ -28,7 +28,7 @@ try {
         htmlspecialchars($_POST["universo_id"]),
         htmlspecialchars($_POST['id'])
     );
-
+    (new Alerta())->add_alerta("Se pudo editar corectamente", "success");
     header("Location: ../index.php?sec=adm_personaje");
 } catch (Exception $e) {
     echo $e->getMessage();

@@ -2,14 +2,10 @@
 $info = new Comic();
 $comics = $info->catalogo_comic();
 
-function filtrarPersonaje($comics, $personaje_id_comic) {
-    $comicsFiltrados = [];
-
-    foreach ($comics as $comic) {
-        if ($comic->getPersonajeIdComic() == $personaje_id_comic) {
-            $comicsFiltrados[] = $comic;
-        }
-    }
+function filtrarPersonaje($catalogo, $nombrePersonaje) {
+    $comicsFiltrados = array_filter($catalogo, function($comic) use ($nombrePersonaje) {
+        return $comic->getNombrePersonaje() === $nombrePersonaje;
+    });
 
     return $comicsFiltrados;
 }

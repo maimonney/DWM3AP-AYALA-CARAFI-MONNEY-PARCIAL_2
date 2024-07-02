@@ -21,7 +21,11 @@ $comics = $info->catalogo_comic();
 
                 <li>Precio: $<?= $comic->getPrecioComic() ?></li>
             </ul>
-            <a href="index.php?sec=comic&id=<?= $comic->getIdComic() ?>" class="btn btn-primary">Comprar</a>
+            <a href="index.php?sec=comic&id=<?= $comic->getIdComic() ?>" class="btn btn-primary">Ver más detalles</a>
+            <div class="col-6">
+            <input class="btn btn-danger" type="submit" value="Agregar al carrito">
+            <input type="hidden" name="id" value="<?= $comic->getIdComic() ?>">
+          </div>
         </div>
     </div>
     <?php } ?>
