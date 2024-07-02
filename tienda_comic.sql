@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-07-2024 a las 00:13:59
+-- Tiempo de generación: 02-07-2024 a las 04:45:57
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -20,29 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `tienda_comic`
 --
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `artista`
---
-
-CREATE TABLE `artista` (
-  `id_artista` int(11) UNSIGNED NOT NULL,
-  `nombre_artista` varchar(256) NOT NULL,
-  `alias_artista` varchar(256) DEFAULT NULL,
-  `nacimiento_artista` date NOT NULL,
-  `biografia_artista` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `artista`
---
-
-INSERT INTO `artista` (`id_artista`, `nombre_artista`, `alias_artista`, `nacimiento_artista`, `biografia_artista`) VALUES
-(1, 'Frank Miller', 'Sin City', '1957-01-27', 'Frank Miller es un aclamado escritor y dibujante de cómics, conocido por su trabajo en Daredevil. Es famoso por sus historias oscuras y adultas, como \"The Dark Knight Returns\" y \"Sin City\".'),
-(2, 'Jim Lee', NULL, '1964-08-11', 'Jim Lee es un renombrado artista y editor de cómics, conocido por su trabajo en Batman. Ha sido fundamental en la creación de historias icónicas del Caballero Oscuro y ha dejado una marca indeleble en el mundo del cómic con su estilo distintivo y su talento artístico.'),
-(3, 'Batman', 'dios', '2024-05-29', 'plus');
 
 -- --------------------------------------------------------
 
@@ -66,9 +43,11 @@ INSERT INTO `autor` (`id_autor`, `nombre_autor`, `alias_autor`, `nacimiento_auto
 (1, 'Stan Lee', 'The Man', '1922-12-28', 'Stan Lee fue un legendario escritor, editor y editor de cómics, reconocido por su trabajo en Marvel Comics. Co-creó muchos de los personajes más icónicos de Marvel, como Spider-Man, Iron Man, Hulk, Thor, X-Men y Fantastic Four.'),
 (2, 'Frank Miller', 'Sin City', '1957-01-27', 'Frank Miller es un aclamado escritor y dibujante de cómics, conocido por su trabajo en DC Comics. Es famoso por sus historias oscuras y adultas, como \"The Dark Knight Returns\" y \"Sin City\".'),
 (3, 'Mike Mignola', 'Hellboy', '1960-09-16', 'Mike Mignola es un reconocido escritor y dibujante de cómics, conocido por crear el personaje de Hellboy. Trabajó en Dark Horse Comics, donde desarrolló la serie de cómics Hellboy, que luego se convirtió en películas y otros medios.'),
-(4, 'mai', 'mai', '2024-06-18', 'plus'),
-(5, '  bnbn', 'her', '2024-06-20', 'herher'),
-(6, 'Batman', 'rth', '2024-06-12', 'plus');
+(8, 'Robert Kahn', 'Bob Kane', '1915-10-24', 'Bob Kane fue un artista de cómics estadounidense conocido principalmente por ser el co-creador de Batman, uno de los superhéroes más icónicos de todos los tiempos. Nació en Nueva York y desde joven mostró un gran talento para el dibujo.'),
+(9, 'Robert Kirkman', '', '1978-11-20', 'Kirkman es conocido por su enfoque en desarrollar personajes complejos y en explorar temas profundos a través de sus historias, además de su capacidad para construir narrativas a largo plazo que mantienen a los lectores enganchados.'),
+(10, 'Sam Hamm', '', '1955-11-19', 'Sam Hamm comenzó su carrera como escritor de cómics en la década de 1980, trabajando en series como &quot;Detective Comics&quot; y &quot;Batman&quot; para DC Comics.'),
+(11, 'Chip Zdarsky', 'Steve Murray', '0000-00-00', 'Chip Zdarsky se ha destacado en la industria del cómic por su habilidad para combinar humor y profundidad en sus historias.'),
+(12, 'fewftwe', 'hersfs', '1998-11-11', 'agaqgag');
 
 -- --------------------------------------------------------
 
@@ -82,7 +61,6 @@ CREATE TABLE `comic` (
   `volumen_comic` float UNSIGNED NOT NULL,
   `titulo_comic` varchar(256) NOT NULL,
   `personaje_id_comic` int(11) UNSIGNED NOT NULL,
-  `artistas_id_comic` int(11) UNSIGNED NOT NULL,
   `editorial_id_comic` int(11) UNSIGNED NOT NULL,
   `portada_comic` varchar(256) NOT NULL,
   `publicacion_fecha` date NOT NULL,
@@ -96,21 +74,16 @@ CREATE TABLE `comic` (
 -- Volcado de datos para la tabla `comic`
 --
 
-INSERT INTO `comic` (`id_comic`, `serie_id_comic`, `volumen_comic`, `titulo_comic`, `personaje_id_comic`, `artistas_id_comic`, `editorial_id_comic`, `portada_comic`, `publicacion_fecha`, `autor_id_comic`, `precio_comic`, `universo_id_comic`, `bajada`) VALUES
-(2, 1, 1, 'Iron Man: Extremis', 1, 2, 1, 'ironman_extremis.webp', '2005-11-01', 1, 13.99, 1, 'i´m iron man'),
-(15, 1, 1, 'Ultimate Comics Spiderman', 1, 1, 1, '6680c3206e046-ultimate-comics-el-nuevo-spiderman-vol-1.jpg', '2024-06-05', 1, 20000, 1, 'El hombre araña');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `comic_x_personaje`
---
-
-CREATE TABLE `comic_x_personaje` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `id_comic` int(10) UNSIGNED NOT NULL,
-  `id_personaje` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `comic` (`id_comic`, `serie_id_comic`, `volumen_comic`, `titulo_comic`, `personaje_id_comic`, `editorial_id_comic`, `portada_comic`, `publicacion_fecha`, `autor_id_comic`, `precio_comic`, `universo_id_comic`, `bajada`) VALUES
+(17, 2, 0, 'Batman: Justicia Ciega', 51, 2, 'batman_1.jpg', '1989-10-10', 10, 40000, 2, 'Batman: Justicia Ciega, es una novela gráfica que presenta a Batman enfrentándose a un enemigo cuyo objetivo es destruir su reputación y hacer que Gotham pierda la fe en él. Batman debe luchar no solo contra villanos físicos, sino tambié'),
+(20, 3, 1, 'Daredevil', 52, 1, 'daredevil_1.jpg', '1987-03-10', 11, 40000, 1, 'Despues de las severos actos y eventos de Devil´s Reign, la vida de Daredevil ha cambiado de gran manera, las cadenas que lo limitaban en su carrera como vigilante se han roto y ahora ha encontrado una nueva visión para llevar su justicia a nuevos niveles.'),
+(21, 2, 11, 'Arkham Renacido', 51, 2, 'batman_2.jpg', '2018-06-05', 2, 50000, 2, 'En Arkham Renacido, Batman enfrenta una serie de desafíos intensos mientras lidia con los oscuros secretos del Asilo Arkham y las amenazas que emergen de su interior. '),
+(22, 3, 1, 'Le poing rouge', 52, 1, 'daredevil_2.jpg', '2022-05-03', 10, 30000, 1, 'No tengo acceso a información específica sobre la fecha exacta de publicación para este volumen. Sería recomendable verificar en fuentes actualizadas de cómics o tiendas especializadas para obtener la fecha exacta de lanzamiento.'),
+(23, 9, 1, 'Les Gardiens du Globe - Assiégés', 53, 10, 'invencible_1.jpg', '2022-10-22', 11, 20000, 6, 'Probablemente se refiere a un arco de historias en el que los Gardiens du Globe enfrentan un asedio o una amenaza que pone a prueba sus habilidades y su lealtad como equipo de superhéroes.'),
+(24, 9, 13, 'Días felices', 53, 10, 'invencible_2.jpg', '2023-04-10', 11, 10000, 6, 'En este número de Invencible, el protagonista, Mark Grayson (Invencible), puede enfrentar diversos desafíos o situaciones.'),
+(25, 10, 1, 'Extremis', 1, 1, 'ironman_1.webp', '1987-11-11', 1, 50000, 1, 'La historia de Extremis sigue a Tony Stark mientras se enfrenta a una nueva amenaza tecnológica que amenaza con cambiar el mundo. Stark se ve obligado a integrar un suero nanotecnológico llamado Extremis en su propio cuerpo para poder enfrentar esta nueva '),
+(26, 1, 2, 'Marvel Ultimate', 49, 1, 'spider_1.jpg', '1987-11-11', 1, 20000, 1, 'La línea Ultimate está especializada en ofrecer versiones modernizadas de los personajes clásicos de Marvel.'),
+(27, 1, 10, 'Ultimate Spiderman ', 49, 1, 'spider_2.jpg', '1998-03-11', 1, 40000, 1, 'Sumérgete en Ultimate Spiderman 10 La Saga Del , una obra maestra de Brian Michael Bendis, publicada por la renombrada editorial Panini Comics. ');
 
 -- --------------------------------------------------------
 
@@ -134,7 +107,7 @@ INSERT INTO `editorial` (`id_editorial`, `nombre_editorial`, `pais_origen_editor
 (1, 'Marvel Comics', 'Estados Unidos', '1939-01-01', 'Marvel Comics es una de las editoriales de cómics más importantes del mundo, conocida por su universo compartido y personajes icónicos como Spider-Man, Iron Man y The Avengers.'),
 (2, 'DC Comics', 'Estados Unidos', '1934-01-01', 'DC Comics es una editorial de cómics estadounidense, famosa por sus personajes como Superman, Batman y Wonder Woman, y su universo compartido.'),
 (3, 'Dark Horse Comics', 'Estados Unidos', '1986-01-01', 'Dark Horse Comics es una editorial independiente de cómics conocida por sus títulos únicos y sus adaptaciones de franquicias populares como Star Wars y Buffy the Vampire Slayer.'),
-(8, 'wgew', 'Japón', '2024-06-19', 'Un superhéroe con habilidades arácnidas');
+(10, 'Image Comics', 'Estados Unidos', '1992-02-01', 'Image Comics es una editorial de cómics que se distingue por su enfoque en permitir a los creadores retener los derechos de autor de sus obras, en contraste con las prácticas más tradicionales de la industria del cómic.');
 
 -- --------------------------------------------------------
 
@@ -159,7 +132,11 @@ CREATE TABLE `personaje` (
 --
 
 INSERT INTO `personaje` (`id`, `nombre`, `alias`, `descripcion`, `autor_id`, `imagen`, `poderes_habilidades`, `fecha_creacion`, `universo_id`) VALUES
-(1, 'Iron Man', 'Tony Stark', 'Iron Man es un superhéroe ficticio creado por Stan Lee, Larry Lieber, Don Heck y Jack Kirby, publicado por Marvel Comics. Su verdadero nombre es Anthony Edward &amp;quot;Tony&amp;quot; Stark, un multimillonario, empresario e ingeniero brillante que sufre u', 1, '66647a7168d5b-personaje_iron_man.jpg', 'Inteligencia genial, habilidades de ingeniería avanzadas, traje de armadura con armas y dispositivos tecnológicos', '1963-03-01', 1);
+(1, 'Tony Stark', 'Iron Man', 'Tony Stark es un multimillonario, inventor y filántropo que, tras ser secuestrado y sufrir una grave herida en el pecho, crea una armadura para escapar. A partir de entonces, utiliza diversas armaduras de alta tecnología para combatir el crimen y proteger ', 1, '668305b436d30-iron-man.png', 'Uso de armaduras avanzadas que otorgan fuerza sobrehumana, capacidad de vuelo, armas avanzadas (repulsores, misiles, láseres), habilidades tecnológicas e ingenieriles excepcionales, inteligencia superior y habilidades de combate cuerpo a cuerpo.', '1963-03-01', 1),
+(49, 'Peter Parker', 'Spider-Man', 'Peter Parker, también conocido como Spider-Man, es un joven que obtiene habilidades arácnidas después de ser mordido por una araña radioactiva. Como Spider-Man, lucha contra el crimen y enfrenta numerosos desafíos personales y profesionales mientras intent', 1, '668304e7c7c00-spider-man.jpg', 'Fuerza sobrehumana, agilidad y reflejos mejorados, capacidad de adherirse a superficies, sentido arácnido (una especie de sexto sentido para el peligro), capacidad de crear y lanzar telarañas usando dispositivos que él mismo inventa', '1962-08-10', 1),
+(51, 'Bruce Wayne', 'Batman', 'Bruce Wayne es un multimillonario de Gotham City que, tras presenciar el asesinato de sus padres cuando era niño, jura vengar sus muertes combatiendo el crimen. Utiliza su vasto patrimonio para desarrollar tecnología avanzada y entrenarse al máximo nivel e', 8, '668306b488266-batman.jpg', 'Inteligencia y habilidades de detective excepcionales, maestro en artes marciales y combate cuerpo a cuerpo, utilización de tecnología avanzada y gadgets (batarangs, Batmobile, etc.), gran capacidad de estrategia y planificación, condición física y habilid', '1939-03-30', 2),
+(52, 'Matthew Michael Murdock', 'Daredevil', 'Matt Murdock es un abogado que, tras quedar ciego en un accidente cuando era niño, desarrolla sus otros sentidos a niveles sobrehumanos. Utiliza estas habilidades para combatir el crimen en Hell&amp;amp;#039;s Kitchen, Nueva York, bajo la identidad de Dare', 1, '6683431ba088d-daredevil.jpg', 'Sentidos sobrehumanos (vista, oído, olfato, gusto y tacto extremadamente agudos), ecolocalización (similar a un sonar), experto en artes marciales y combate cuerpo a cuerpo, gran agilidad y equilibrio, habilidades de detección y rastreo superiores', '1964-04-10', 1),
+(53, 'Mark Grayson', 'Invencible', 'Mark Grayson es un adolescente cuya vida cambia cuando descubre que ha heredado los superpoderes de su padre, Omni-Man, un poderoso extraterrestre del planeta Viltrum. Adoptando la identidad de Invincible, Mark lucha contra el crimen y enfrenta desafíos pe', 9, '668309b7e8fa6-invincible.jpg', 'Fuerza sobrehumana, velocidad y agilidad mejoradas, resistencia y durabilidad excepcionales, capacidad de vuelo, factor de curación acelerado', '2003-01-22', 6);
 
 -- --------------------------------------------------------
 
@@ -182,7 +159,9 @@ CREATE TABLE `serie` (
 INSERT INTO `serie` (`id_serie`, `nombre_serie`, `descripcion_serie`, `fecha_inicio_serie`, `editorial_id_serie`) VALUES
 (1, 'The Amazing Spider-Man', 'La serie principal que sigue las aventuras de Spider-Man en el universo Marvel.', '1963-03-01', 1),
 (2, 'Batman', 'La serie principal que sigue las aventuras de Batman en el universo DC Comics.', '1940-04-25', 2),
-(3, 'Daredevil', 'La serie que sigue las aventuras del superhéroe Daredevil en el universo Marvel.', '1964-04-01', 1);
+(3, 'Daredevil', 'La serie que sigue las aventuras del superhéroe Daredevil en el universo Marvel.', '1964-04-01', 1),
+(9, 'Invencible', 'Mark Grayson es un adolescente cuya vida cambia cuando descubre que ha heredado los superpoderes de su padre.', '2003-01-22', 10),
+(10, 'Iron man', 'Iron Man es un personaje icónico dentro del universo de Marvel Comics y del mundo del entretenimiento en general.', '1963-05-11', 1);
 
 -- --------------------------------------------------------
 
@@ -204,7 +183,7 @@ CREATE TABLE `universo` (
 INSERT INTO `universo` (`id_universo`, `nombre_universo`, `creacion_universo`, `descripcion_universo`) VALUES
 (1, 'Marvel', '1939-01-01', 'Marvel Comics es una editorial estadounidense de cómics, famosa por su universo compartido con personajes icónicos como Spider-Man, Iron Man, The Avengers y X-Men. Fundada en 1939, ha tenido un gran impacto cultural a través de cómics, películas y series.'),
 (2, 'DC', '1934-01-01', 'DC Comics es una editorial de cómics estadounidense, famosa por sus personajes como Superman, Batman y Wonder Woman, y su universo compartido.'),
-(4, 'Batman', '2024-06-05', 'Hombre murciélago de Gotham City');
+(6, 'Universo Image Comics', '1992-02-16', 'El Universo Image Comics es el escenario compartido donde se desarrollan muchas de las historias y personajes publicados por Image Comics, una editorial de cómics estadounidense fundada en 1992 por un grupo de destacados artistas: Todd McFarlane, Jim Lee, ');
 
 -- --------------------------------------------------------
 
@@ -226,18 +205,15 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `email`, `nombre_usuario`, `nombre_completo`, `password`, `roles`) VALUES
-(0, 'mailen.monney@davinci.edi.ar', 'Mai', 'Mailen Monney', 'mai123', 'superadmin'),
-(1, 'mailen.monney@davinci.edi.ar', 'Mai', 'Mailen Monney', 'mai123', 'superadmin');
+(1, 'admin', 'admin', 'admin', 'admin', 'superadmin'),
+(3, 'mai', '', '', 'mai', 'admin'),
+(7, 'dg', '', '', '$2y$10$24YawVqJDSvISyPP9S.N3.6VadX9cohwl3WKfPAtIRS/EeB31Ak.a', 'admin'),
+(8, 's', '', '', '$2y$10$RRiKkLWZN9nsML8QYZa55eRM9WDIBkU0TX6HE/thy6yuamSU/ct/m', 'admin'),
+(9, 'x', '', '', '$2y$10$GQy41qe6AHLWy0QQ5Us4He2r3iCHWVFEFGzjuR7JG5YOF9CevWtqi', 'usuario');
 
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `artista`
---
-ALTER TABLE `artista`
-  ADD PRIMARY KEY (`id_artista`);
 
 --
 -- Indices de la tabla `autor`
@@ -252,7 +228,6 @@ ALTER TABLE `comic`
   ADD PRIMARY KEY (`id_comic`),
   ADD KEY `serie_id` (`serie_id_comic`),
   ADD KEY `personaje_id` (`personaje_id_comic`),
-  ADD KEY `artistas_id` (`artistas_id_comic`),
   ADD KEY `autor_id` (`autor_id_comic`),
   ADD KEY `universo_id` (`universo_id_comic`),
   ADD KEY `fk_editorial` (`editorial_id_comic`);
@@ -286,50 +261,56 @@ ALTER TABLE `universo`
   ADD KEY `nombre` (`nombre_universo`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- Indices de la tabla `usuarios`
 --
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de la tabla `artista`
+-- AUTO_INCREMENT de las tablas volcadas
 --
-ALTER TABLE `artista`
-  MODIFY `id_artista` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `autor`
 --
 ALTER TABLE `autor`
-  MODIFY `id_autor` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_autor` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `comic`
 --
 ALTER TABLE `comic`
-  MODIFY `id_comic` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_comic` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `editorial`
 --
 ALTER TABLE `editorial`
-  MODIFY `id_editorial` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_editorial` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `personaje`
 --
 ALTER TABLE `personaje`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT de la tabla `serie`
 --
 ALTER TABLE `serie`
-  MODIFY `id_serie` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_serie` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `universo`
 --
 ALTER TABLE `universo`
-  MODIFY `id_universo` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_universo` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restricciones para tablas volcadas
@@ -341,7 +322,6 @@ ALTER TABLE `universo`
 ALTER TABLE `comic`
   ADD CONSTRAINT `comic_ibfk_1` FOREIGN KEY (`autor_id_comic`) REFERENCES `autor` (`id_autor`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `comic_ibfk_3` FOREIGN KEY (`universo_id_comic`) REFERENCES `universo` (`id_universo`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `comic_ibfk_5` FOREIGN KEY (`artistas_id_comic`) REFERENCES `artista` (`id_artista`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `comic_ibfk_6` FOREIGN KEY (`serie_id_comic`) REFERENCES `serie` (`id_serie`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `comic_ibfk_7` FOREIGN KEY (`personaje_id_comic`) REFERENCES `personaje` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_editorial` FOREIGN KEY (`editorial_id_comic`) REFERENCES `editorial` (`id_editorial`),
@@ -351,8 +331,7 @@ ALTER TABLE `comic`
 -- Filtros para la tabla `personaje`
 --
 ALTER TABLE `personaje`
-  ADD CONSTRAINT `personaje_ibfk_4` FOREIGN KEY (`autor_id`) REFERENCES `autor` (`id_autor`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `personaje_ibfk_5` FOREIGN KEY (`universo_id`) REFERENCES `universo` (`id_universo`) ON DELETE NO ACTION ON UPDATE CASCADE;
+  ADD CONSTRAINT `personaje_ibfk_4` FOREIGN KEY (`autor_id`) REFERENCES `autor` (`id_autor`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `serie`
