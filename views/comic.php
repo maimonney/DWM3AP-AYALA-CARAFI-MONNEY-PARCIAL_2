@@ -3,11 +3,11 @@ include_once './class/Comic.php';
 include_once './class/Carrito.php';
 include_once './class/Alerta.php';
 
-$info = new Comic();
+$comics = new Comic();
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $comic = $info->catalogo_id($id);
+    $comic = $comics->catalogo_id($id);
 
     if (!$comic) {
         echo "Cómic no encontrado";
@@ -27,15 +27,15 @@ if (isset($_GET['id'])) {
         <div class="card-body m-5">
             <h3 class="card-title"><?= htmlspecialchars($comic->getTituloComic()) ?></h3>
             <p><?= htmlspecialchars($comic->getBajada()) ?></p>
-            <ul>
-                <li>Autor: <?= htmlspecialchars($comic->getNombreAutor()) ?></li>
-                <li>Serie: <?= htmlspecialchars($comic->getNombreSerie()) ?></li>
-                <li>Volumen: <?= htmlspecialchars($comic->getVolumenComic()) ?></li>
-                <li>Personaje principal: <?= htmlspecialchars($comic->getNombrePersonaje()) ?></li>
-                <li>Universo: <?= htmlspecialchars($comic->getNombreUniverso()) ?></li>
-                <li>Fecha de publicación: <?= htmlspecialchars($comic->getPublicacionFecha()) ?></li>
-                <li>Editorial: <?= htmlspecialchars($comic->getNombreEditorial()) ?></li>
-                <li>Precio: $<?= htmlspecialchars($comic->getPrecioComic()) ?></li>
+            <ul class="cont_info mb-2">
+                <li><strong>Autor:</strong> <?= htmlspecialchars($comic->getNombreAutor()) ?></li>
+                <li><strong>Serie:</strong> <?= htmlspecialchars($comic->getNombreSerie()) ?></li>
+                <li><strong>Volumen:</strong> <?= htmlspecialchars($comic->getVolumenComic()) ?></li>
+                <li><strong>Personaje principal:</strong> <?= htmlspecialchars($comic->getNombrePersonaje()) ?></li>
+                <li><strong>Universo:</strong> <?= htmlspecialchars($comic->getNombreUniverso()) ?></li>
+                <li><strong>Fecha de publicación:</strong> <?= htmlspecialchars($comic->getPublicacionFecha()) ?></li>
+                <li><strong>Editorial:</strong> <?= htmlspecialchars($comic->getNombreEditorial()) ?></li>
+                <li><strong>Precio:</strong> $<?= htmlspecialchars($comic->getPrecioComic()) ?></li>
             </ul>
             <div class="card-body flex-grow-0 mt-auto">
                     <form action="admin/actions/addProducto.php" method="post" class="row">
@@ -43,7 +43,7 @@ if (isset($_GET['id'])) {
                         <label for="">Cantidad:</label>
                         <input type="number" name="cantidad" id="cantidad" value="1">
                       </div>
-                      <div>
+                      <div class="mt-3">
                         <input class="btn" type="submit" value="Comprar">
                         <input type="hidden" name="id" value="<?= $comic->getIdComic() ?>">
                       </div>

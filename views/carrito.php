@@ -16,6 +16,8 @@ $miCarrito = new carrito();
 $productos = $miCarrito->get_carrito();
 
 ?>
+<div class="cont_carrito">
+<div>
 <h2 class="text-center fs-2 my-5"> Carrito de Compras</h2>
 <div class="container my-4">
     <?= (new Alerta())->get_alertas() ?>
@@ -43,7 +45,7 @@ $productos = $miCarrito->get_carrito();
                             <td class="align-middle">
                                 <label for="cantidad_<?= $id ?>">Cantidad</label>
                                 <input type="number" value="<?= $producto["cantidad"] ?>" name="cantidad[<?= $id ?>]" id="cantidad_<?= $id ?>">
-                                <button type="submit" class="btn btn-warning">Actualizar cantidades</button>
+                                <button type="submit" class="btn">Actualizar cantidades</button>
                             </td>
                             <td class="text-end align-middle">
                                 <p class="h5 py-3"><?= $producto['precio'] ?></p>
@@ -52,7 +54,7 @@ $productos = $miCarrito->get_carrito();
                                 <p class="h5 py-3"><?= $producto['precio'] * $producto["cantidad"] ?></p>
                             </td>
                             <td class="text-end align-middle">
-                                <a href="admin/actions/daleteProducto.php?id=<?= $id ?>" class="btn btn-danger">Eliminar</a>
+                                <a href="admin/actions/daleteProducto.php?id=<?= $id ?>" class="btn">Eliminar</a>
                             </td>
                         </tr>
                     <?php } ?>
@@ -60,14 +62,15 @@ $productos = $miCarrito->get_carrito();
             </table>
 
             <div class="d-flex justify-content-end gap-2">
-                <a class="btn btn-success" href="index.php?sec=todo">Seguir comprando</a>
-                <a class="btn btn-danger" href="admin/actions/VaciarCarrito.php">Vaciar Carrito</a>
+                <a class="btn" href="index.php?sec=todo">Seguir comprando</a>
+                <a class="btn" href="admin/actions/VaciarCarrito.php">Vaciar Carrito</a>
                 <a class="btn btn-secondary" href="index.php?sec=compraFinalizada">Finalizar Compra</a>
             </div>
 
         </form>
     <?php } else { ?>
         <h2 class="text-center mb-5">Su carrito está vacío</h2>
-        <a class="btn btn-success" href="index.php?sec=todo">Seguir comprando</a>
+        <a class="btn" href="index.php?sec=todo">Seguir comprando</a>
     <?php } ?>
 </div>
+</div></div>

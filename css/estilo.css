@@ -6,44 +6,46 @@
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-  body{
-    background-color: rgb(240, 214, 238);
-    
+body {
+  background-color: rgb(240, 214, 238);
+
 }
 
-main{
+main {
   margin-top: 120px;
 }
 
-nav{
-  background-color:  #6d327986;
+nav {
+  background-color: #6d327986;
 }
 
-.nav-link, .navbar-nav .nav-link.active{
+.nav-link,
+.navbar-nav .nav-link.active {
   color: white;
 }
 
-.nav-link:hover, .navbar-nav .nav-link.active:hover{
+.nav-link:hover,
+.navbar-nav .nav-link.active:hover {
   color: #6d3279;
 }
 
-.dropdown-menu{
+.dropdown-menu {
   background-color: #b28ab9;
   color: #fff;
 }
 
-.container{
+.container {
   margin-top: 70px;
   margin-left: 0;
   margin-right: 0;
 }
 
-h1{
+h1 {
   font-family: 'SpiderMan', sans-serif;
   font-size: 2rem;
   margin: 0 20px 0 20px;
@@ -53,7 +55,7 @@ h1{
   text-align: center;
 }
 
-h2{
+h2 {
   font-family: 'SpiderMan', sans-serif;
   font-size: 15rem;
   text-transform: uppercase;
@@ -62,24 +64,34 @@ h2{
   text-align: center;
 }
 
-.titulo_comic{
+.titulo_comic {
   font-size: 5rem;
   text-shadow: none;
   color: #6d3279;
 }
 
-.card-body h3{
+.card-body h3 {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   color: #6d3279;
 }
 
-.banner_1 img{
+.banner_1 img {
   width: 200px;
 }
 
-.presentacion{
-    display: flex;
-    align-items: center;
+.presentacion {
+  display: flex;
+  align-items: center;
+}
+
+.cont_info li{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.cont_info{
+  margin: 0;
+  padding: 0;
 }
 
 .personajesCirculos img {
@@ -90,25 +102,27 @@ h2{
   padding: 0;
 }
 
-.personajesCirculos .dosimg img{
+.personajesCirculos .dosimg img {
   width: 100px;
 }
 
 .personajesCirculos img {
-  width: 120px; 
+  width: 120px;
 }
 
 
-.personajes{
+.personajes {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-    justify-content: center;
-    margin-bottom: 150px;
+  justify-content: center;
+  margin-bottom: 150px;
 }
 
 .personajes a,
-.error .spider_circulo, .circulo{
+.error .spider_circulo,
+.circulo,
+.fin_compra {
   text-decoration: none;
   width: 200px;
   height: 200px;
@@ -120,15 +134,15 @@ h2{
   justify-content: center;
 }
 
-.error .spider_circulo{
+.error .spider_circulo, .fin_compra {
   background-color: #6d3279;
 }
 
 .personajes img:hover {
-  transform: scale(1.2); 
+  transform: scale(1.2);
 }
 
-.personajes p{
+.personajes p {
   text-align: center;
   color: #6d3279;
   font-size: 1.5rem;
@@ -136,72 +150,84 @@ h2{
   margin-top: 120px;
 }
 
-.sobreNosotros{
+.sobreNosotros {
   background-color: #efb4ce;
   margin: 140px 0;
   padding: 70px;
 }
 
-h3{
+h3 {
   color: #6d3279;
   font-family: 'SpiderMan', sans-serif;
   font-size: 3rem;
   text-transform: uppercase;
 }
 
-.cont_personaje h2{
+.cont_personaje h2 {
   margin-bottom: 100px;
 }
 
-.footer{
-    background-image: url(../img/banner.png);
-    background-size:contain; 
-    background-repeat:repeat; 
-    background-attachment: fixed;
-    padding: 30px;
-   
+.footer {
+  background-image: url(../img/banner.png);
+  background-size: contain;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  padding: 30px;
+
 }
 
-.contenedor_comic, .cont_info_form{
+.contenedor_comic,
+.cont_info_form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.div_comic{
+.div_comic {
   width: 60%;
 }
 
-.div_comic img{
+.div_comic img {
   width: 400px;
 }
 
-.btn{
+.btn,
+.btn_adm_cont a {
   background-color: #6d3279;
   color: #fff;
   border: none;
   padding: 10px 20px;
   border-radius: 30px;
   cursor: pointer;
-  width: 100%; 
-} 
-    
-.btn:hover {
-background-color: #d38faf;
+  width: 100%;
 }
 
-.btn_compra{
+.btn_adm_cont a {
+  margin: 10px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #d38faf;
+}
+
+.btn_compra {
   width: 40%;
 }
 
-.formulario, .cont{
+.formulario,
+.cont,
+.fin_contenedor {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.contenedor_form, .error, .cont_info_form {
+.contenedor_form,
+.error,
+.cont_info_form,
+.fin_compra {
   width: 60%;
   margin: 20px;
   background-color: #d1a0c1;
@@ -218,13 +244,13 @@ background-color: #d38faf;
   color: #6d3279;
 }
 
-.cont_info_form h2{
+.cont_info_form h2 {
   font-size: 5rem;
   text-shadow: none;
   color: #6d3279;
 }
 
-form{
+form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -249,7 +275,7 @@ input[type="tel"] {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 3px;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 
 }
 
@@ -260,65 +286,92 @@ textarea {
   border: 1px solid #ccc;
   border-radius: 3px;
   box-sizing: border-box;
-  height: 100px; 
+  height: 100px;
 }
 
-.btn_sub{
+.btn_sub {
   width: 40%;
 }
 
-.error_contenedor, .cont, .formulario{
+.error_contenedor,
+.cont,
+.formulario,
+.fin_contenedor,
+.fin_compra {
   height: 65vh;
 }
 
-.error h2{
+.error h2 {
   color: #6d3279;
   font-size: 8rem;
 }
 
-strong{
+.fin_compra h2{
+  color: #6d3279;
+  font-size: 4rem;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+strong {
   color: #6d3279;
 }
 
-.error_contenedor, .error, .cont_form{
+.error_contenedor,
+.error,
+.cont_form,
+.fin_compra {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.adm_borrar, .panel_control{
+.adm_borrar {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 100px;
 }
 
-.panel_control h1{
-  font-size: 7rem;
-  color:  #6d327986;
+.panel_control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.adm_borrar h2, .panel_control h2{
+.cont_panel_control h1 {
+  font-size: 7rem;
+  color: #b28ab9;
+  text-shadow: 2px 3px 0 #6d3279;
+}
+
+.panel_control h2 {
+  font-size: 3rem;
+  text-shadow: none;
+  color: #6d3279;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.adm_borrar h2 {
   font-size: 5rem;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   margin-bottom: 10px;
 }
 
-.adm_borrar h3{
+.adm_borrar h3 {
   font-size: 3rem;
 }
 
-.cont_btn_adm{
+.cont_btn_adm {
   display: flex;
   margin: 0 20px 0 20px;
 }
 
-.cont_btn_adm a{
+.cont_btn_adm a {
   width: 200px;
   margin: 20px;
 }
 
-.cont_login{
+.cont_login {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -326,62 +379,71 @@ strong{
   margin-top: 60px;
 }
 
+.cont_carrito {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 @media (max-width: 900px) {
-h2{
+  h2 {
     font-size: 8rem;
   }
-  .contenedor_banner{
+
+  .contenedor_banner {
     margin: 0;
   }
 
-  .personajes_h2{
+  .personajes_h2 {
     display: flex;
     flex-direction: column;
   }
 
-  .container{
+  .container {
     max-width: 813px;
   }
 
-  .sobreNosotros{
+  .sobreNosotros {
     flex-direction: column;
     padding: 0;
   }
 
-  .sobreNosotros div{
+  .sobreNosotros div {
     width: 90%;
   }
 
-  .alumnas{
+  .alumnas {
     display: flex;
     flex-direction: column;
   }
 
 }
 
-@media (max-width: 500px){
-  h1{
+@media (max-width: 500px) {
+  h1 {
     font-size: 1.5rem;
   }
-  .contenedor_banner h2{
+
+  .contenedor_banner h2 {
     font-size: 5rem;
     text-align: center;
   }
 
-  .personajesCirculos{
+  .personajesCirculos {
     display: none;
   }
 
-  .contenedor_form h2{
+  .contenedor_form h2 {
     font-size: 1.5rem;
   }
 
-  .contenedor_form{
+  .contenedor_form {
     margin: 0;
   }
 
-  .btn_sub{
+  .btn_sub {
     width: 90%;
   }
 }

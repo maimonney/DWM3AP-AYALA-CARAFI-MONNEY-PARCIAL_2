@@ -23,9 +23,9 @@ if (isset($_GET['personaje'])) {
             <h3 class="card-title"><?= $comicPersonaje->getTituloComic() ?></h3>
             <p class="card-title"><?= $comicPersonaje->getNombrePersonaje() ?></p>
             <p><?= recortarBajada($comicPersonaje->getBajada()) ?></p>
-            <ul>
-                <li>Autor: <?= $comicPersonaje->getNombreAutor() ?></li>
-                <li>Precio: $<?= $comicPersonaje->getPrecioComic() ?></li>
+            <ul class="cont_info">
+                <li><strong>Autor:</strong> <?= $comicPersonaje->getNombreAutor() ?></li>
+                <li><strong>Precio:</strong> $<?= $comicPersonaje->getPrecioComic() ?></li>
             </ul>
             <a href="index.php?sec=comic&id=<?= $comicPersonaje->getIdComic() ?>" class="btn btn-primary">Comprar</a>
         </div>
