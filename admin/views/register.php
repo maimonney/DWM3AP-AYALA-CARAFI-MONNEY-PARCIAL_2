@@ -1,5 +1,5 @@
-<div>
-<img src="../img/groot.png" alt="ilustracion groot">
+<div class="error_contenedor">
+<div><img src="../img/groot.png" alt="ilustracion groot" width="200"></div>
     <div>
         <h1>Registrar Usuario</h1>
 

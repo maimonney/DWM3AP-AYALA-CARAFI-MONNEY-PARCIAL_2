@@ -1,5 +1,5 @@
-<div class="cont_login">
-    <img src="../img/groot.png" alt="ilustracion groot">
+<div class="error_contenedor">
+<div><img src="../img/groot.png" alt="ilustracion groot" width="200"></div>
     <div>
         <h1>Iniciar Sesion</h1>
         <?= (new Alerta())->get_alertas() ?>
