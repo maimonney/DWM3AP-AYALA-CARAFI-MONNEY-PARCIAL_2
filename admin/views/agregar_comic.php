@@ -5,7 +5,8 @@ $editoriales = (new Editorial())->catalogo_editorial();
 $universos = (new Universo())->catalogo_universo();
 $series = (new Serie())->catalogo_serie();
 ?>
-<h2>Agregar un comic</h2>
+<div class="cont_agregar mt-5">
+<h2 class="agregar_h2 mb-3">Agregar un comic</h2>
 <form class="row g-3" action="actions/accAgregarComic.php" method="POST" enctype="multipart/form-data">
     <div class="col-md-6 mb-3">
         <label for="titulo" class="form-label">Titulo</label>
@@ -91,3 +92,4 @@ $series = (new Serie())->catalogo_serie();
         <button type="submit" class="btn btn-primary">Cargar</button>
     </div>
 </form>
+            </div>

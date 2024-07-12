@@ -116,9 +116,13 @@ class Autor {
         $conexion = new Conexion();
         $db = $conexion->getConexion();
         $query = "DELETE FROM autor WHERE id_autor = :id";
+        // echo "<pre>";
+        // echo "$query";
+        // echo "</pre>";
         $statement = $db->prepare($query);
-        $statement->bindParam(':id', $this->id_autor, PDO::PARAM_INT);
-        return $statement->execute();
+        $statement->execute([
+            'id' => htmlspecialchars($this->id),
+        ]);
     }
     
 

@@ -57,11 +57,15 @@ h1 {
 
 h2 {
   font-family: 'SpiderMan', sans-serif;
-  font-size: 15rem;
   text-transform: uppercase;
+  font-size: 7rem;
   color: #efb4ce;
   text-shadow: 4px 6px 0 #d38faf;
   text-align: center;
+}
+
+.contenedor_banner h2{
+  font-size: 15rem;
 }
 
 .titulo_comic {
@@ -236,7 +240,8 @@ h3 {
   box-shadow: 20px 0px 10px rgba(27, 27, 27, 0.1);
 }
 
-.formulario h2 {
+.formulario h2,
+.cont_carrito_h2 h2 {
   text-align: center;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 2rem;

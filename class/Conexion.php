@@ -12,7 +12,7 @@ class Conexion {
 
     public function __construct() {
         try {
-            $this->db = new PDO(self::DB_DSN, self::DB_USER, self::DB_PASS);
+            $this->db = new PDO(self::DB_DSN, self::DB_USER, self::DB_PASS, array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
             // echo "Conexion creada";
             // echo self::$conexiones++;
         } catch (Exception $e) {
