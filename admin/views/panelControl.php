@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-center p-5 cont_panel_control">
     <div>
         <h1>Panel de control</h1>
-        <p class="text-center mt-5">Bienvenido al panel de control de la tienda de comics</p>
+        <p class="text-center mt-5">Bienvenido al panel de control</p>
         <div class="d-flex mt-5">
             <div><img src="../img/batman_panel.png" alt="ilustracion batman" width="200"></div>
 
@@ -14,6 +14,7 @@
                     <a href="index.php?sec=adm_universo">Universos</a>
                     <a href="index.php?sec=adm_editorial">Editorial</a>
                     <a href="index.php?sec=adm_autor">Autor</a>
+                    <a href="index.php?sec=adm_usuarios">Usuario</a>
                 </div>
             </div>
         </div>

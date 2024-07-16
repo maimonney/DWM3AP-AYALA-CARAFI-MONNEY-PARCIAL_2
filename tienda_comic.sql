@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-07-2024 a las 04:45:57
+-- Tiempo de generación: 15-07-2024 a las 23:00:23
 -- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Versión de PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -48,6 +48,31 @@ INSERT INTO `autor` (`id_autor`, `nombre_autor`, `alias_autor`, `nacimiento_auto
 (10, 'Sam Hamm', '', '1955-11-19', 'Sam Hamm comenzó su carrera como escritor de cómics en la década de 1980, trabajando en series como &quot;Detective Comics&quot; y &quot;Batman&quot; para DC Comics.'),
 (11, 'Chip Zdarsky', 'Steve Murray', '0000-00-00', 'Chip Zdarsky se ha destacado en la industria del cómic por su habilidad para combinar humor y profundidad en sus historias.'),
 (12, 'fewftwe', 'hersfs', '1998-11-11', 'agaqgag');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `carrito`
+--
+
+CREATE TABLE `carrito` (
+  `id_carrito` int(10) UNSIGNED NOT NULL,
+  `usuario_id` int(10) UNSIGNED NOT NULL,
+  `fecha_creacion` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `carrito_detalle`
+--
+
+CREATE TABLE `carrito_detalle` (
+  `id_detalle` int(10) UNSIGNED NOT NULL,
+  `carrito_id` int(10) UNSIGNED NOT NULL,
+  `comic_id` bigint(20) UNSIGNED NOT NULL,
+  `cantidad` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -192,24 +217,13 @@ INSERT INTO `universo` (`id_universo`, `nombre_universo`, `creacion_universo`, `
 --
 
 CREATE TABLE `usuarios` (
-  `id` int(11) NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL,
   `email` varchar(256) NOT NULL,
   `nombre_usuario` varchar(20) NOT NULL,
   `nombre_completo` varchar(256) NOT NULL,
   `password` varchar(256) NOT NULL,
   `roles` enum('usuario','admin','superadmin') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `usuarios`
---
-
-INSERT INTO `usuarios` (`id`, `email`, `nombre_usuario`, `nombre_completo`, `password`, `roles`) VALUES
-(1, 'admin', 'admin', 'admin', 'admin', 'superadmin'),
-(3, 'mai', '', '', 'mai', 'admin'),
-(7, 'dg', '', '', '$2y$10$24YawVqJDSvISyPP9S.N3.6VadX9cohwl3WKfPAtIRS/EeB31Ak.a', 'admin'),
-(8, 's', '', '', '$2y$10$RRiKkLWZN9nsML8QYZa55eRM9WDIBkU0TX6HE/thy6yuamSU/ct/m', 'admin'),
-(9, 'x', '', '', '$2y$10$GQy41qe6AHLWy0QQ5Us4He2r3iCHWVFEFGzjuR7JG5YOF9CevWtqi', 'usuario');
 
 --
 -- Índices para tablas volcadas
@@ -220,6 +234,21 @@ INSERT INTO `usuarios` (`id`, `email`, `nombre_usuario`, `nombre_completo`, `pas
 --
 ALTER TABLE `autor`
   ADD PRIMARY KEY (`id_autor`);
+
+--
+-- Indices de la tabla `carrito`
+--
+ALTER TABLE `carrito`
+  ADD PRIMARY KEY (`id_carrito`),
+  ADD KEY `usuario_id` (`usuario_id`);
+
+--
+-- Indices de la tabla `carrito_detalle`
+--
+ALTER TABLE `carrito_detalle`
+  ADD PRIMARY KEY (`id_detalle`),
+  ADD KEY `carrito_id` (`carrito_id`),
+  ADD KEY `comic_id` (`comic_id`);
 
 --
 -- Indices de la tabla `comic`
@@ -277,6 +306,18 @@ ALTER TABLE `autor`
   MODIFY `id_autor` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
+-- AUTO_INCREMENT de la tabla `carrito`
+--
+ALTER TABLE `carrito`
+  MODIFY `id_carrito` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `carrito_detalle`
+--
+ALTER TABLE `carrito_detalle`
+  MODIFY `id_detalle` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `comic`
 --
 ALTER TABLE `comic`
@@ -310,11 +351,24 @@ ALTER TABLE `universo`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `carrito`
+--
+ALTER TABLE `carrito`
+  ADD CONSTRAINT `carrito_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
+
+--
+-- Filtros para la tabla `carrito_detalle`
+--
+ALTER TABLE `carrito_detalle`
+  ADD CONSTRAINT `carrito_detalle_ibfk_1` FOREIGN KEY (`carrito_id`) REFERENCES `carrito` (`id_carrito`),
+  ADD CONSTRAINT `carrito_detalle_ibfk_2` FOREIGN KEY (`comic_id`) REFERENCES `comic` (`id_comic`);
 
 --
 -- Filtros para la tabla `comic`

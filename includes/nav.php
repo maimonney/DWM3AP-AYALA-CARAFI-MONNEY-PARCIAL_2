@@ -30,6 +30,9 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="index.php?sec=formulario">Contacto</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.php?sec=UsuarioViews">Perfil</a>
+                </li>
             </ul>
         </div>
     </div>

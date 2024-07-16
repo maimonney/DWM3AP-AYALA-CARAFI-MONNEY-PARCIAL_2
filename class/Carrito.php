@@ -57,4 +57,8 @@ class Carrito{
 
         $_SESSION["carrito"] = [];
     }
+
+    public function finalizarCompra(){
+        session_start(); 
+    }
 }

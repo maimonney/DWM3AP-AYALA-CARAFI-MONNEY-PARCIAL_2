@@ -38,6 +38,10 @@ $vistasValidas = [
         'titulo' => 'Administracion de autores',
         'restringido' => true,
     ],
+    'adm_usuarios' => [
+        'titulo' => 'Administracion de ususarios',
+        'restringido' => true,
+    ],
     // Agregar
     'agregar_personaje' => [
         'titulo' => 'Agregar personaje',
@@ -88,6 +92,10 @@ $vistasValidas = [
         'titulo' => 'Borrar autor',
         'restringido' => true,
     ],
+    'borrar_usuario' => [
+        'titulo' => 'Borrar usuario',
+        'restringido' => true,
+    ],
     //    Editar
     'edit_personaje' => [
         'titulo' => 'Editar personaje',
@@ -111,6 +119,10 @@ $vistasValidas = [
     ],
     'edit_autor' => [
         'titulo' => 'Editar autor',
+        'restringido' => true,
+    ],
+    'edit_usuario' => [
+        'titulo' => 'Editar usuario',
         'restringido' => true,
     ],
     // Login
