@@ -52,18 +52,18 @@ class Usuario
         return $resultado ? $resultado : [];
     }
 
-    public function ususario_id(int $id) {
-     $conexion = new Conexion();
-     $db = $conexion->getConexion();
-     $query = "SELECT * FROM usuarios WHERE id = :id";
-     $PDOStament = $db->prepare($query);
-     $PDOStament->bindParam(':id', $id, PDO::PARAM_INT);
-     $PDOStament->setFetchMode(PDO::FETCH_CLASS, self::class);
-     $PDOStament->execute();
+    public function usuario_id(int $id) {
+        $conexion = new Conexion();
+        $db = $conexion->getConexion();
+        $query = "SELECT * FROM usuarios WHERE id = :id";
+        $PDOStament = $db->prepare($query);
+        $PDOStament->bindParam(':id', $id, PDO::PARAM_INT);
+        $PDOStament->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStament->execute();
 
-     $resultado = $PDOStament->fetch();
-     return $resultado ? $resultado : null;
- }
+        $resultado = $PDOStament->fetch();
+        return $resultado ? $resultado : null;
+    }
 
     public function insert($email, $nombre_usuario, $nombre_completo, $password, $roles)
     {
@@ -82,28 +82,28 @@ class Usuario
     }
 
     public function edit($email, $nombre_usuario, $nombre_completo, $password, $roles, $id)
-{
-    $conexion = new Conexion();
-    $db = $conexion->getConexion();
-    $query = "UPDATE usuarios SET
-        email = :email,
-        nombre_usuario = :nombre_usuario,
-        nombre_completo = :nombre_completo,
-        password = :password,
-        roles = :roles
-        WHERE id = :id";
+    {
+        $conexion = new Conexion();
+        $db = $conexion->getConexion();
+        $query = "UPDATE usuarios SET
+            email = :email,
+            nombre_usuario = :nombre_usuario,
+            nombre_completo = :nombre_completo,
+            password = :password,
+            roles = :roles
+            WHERE id = :id";
 
-    $PDOStatement = $db->prepare($query);
-    $paswordHash = password_hash(htmlspecialchars($password), PASSWORD_DEFAULT);
-    $PDOStatement->execute([
-        'email' => htmlspecialchars($email),
-        'nombre_usuario' => htmlspecialchars($nombre_usuario),
-        'nombre_completo' => htmlspecialchars($nombre_completo),
-        'password' => $paswordHash, 
-        'roles' => htmlspecialchars($roles),
-        'id' => htmlspecialchars($id),
-    ]);
-}
+        $PDOStatement = $db->prepare($query);
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+        $PDOStatement->execute([
+            'email' => $email,
+            'nombre_usuario' => $nombre_usuario,
+            'nombre_completo' => $nombre_completo,
+            'password' => $passwordHash,
+            'roles' => $roles,
+            'id' => $id,
+        ]);
+    }
 
     public function filtro_usuario_nombre(string $nombre_usuario): ?self
     {

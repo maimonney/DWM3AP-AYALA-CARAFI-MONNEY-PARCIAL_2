@@ -78,18 +78,24 @@
         return $this;
     }
 
-    public function guardarDetalleCompra($carrito_id, $comic_id, $cantidad)
-    {
+    public function __construct($carrito_id, $comic_id, $cantidad) {
+        $this->carrito_id = $carrito_id;
+        $this->comic_id = $comic_id;
+        $this->cantidad = $cantidad;
+    }
+
+    public function guardarDetalleCompra() {
         try {
-            $conexion = new Conexion(); 
-            $db = $conexion->getConexion(); 
-            
+            $conexion = new Conexion();
+            $db = $conexion->getConexion();
+
             $stmt = $db->prepare("INSERT INTO carrito_detalle (carrito_id, comic_id, cantidad) VALUES (:carrito_id, :comic_id, :cantidad)");
             $stmt->execute([
-                ':carrito_id' => $carrito_id,
-                ':comic_id' => $comic_id,
-                ':cantidad' => $cantidad
+                ':carrito_id' => $this->carrito_id,
+                ':comic_id' => $this->comic_id,
+                ':cantidad' => $this->cantidad
             ]);
+
             return true;
         } catch (PDOException $e) {
             echo "Error al guardar detalle de compra: " . $e->getMessage();

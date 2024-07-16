@@ -2,6 +2,12 @@
 
 class Autentificacion {
     
+    public function __construct() {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+    }
+    
     public function log_in($nombre_usuario, $password) {
         $usuario = (new Usuario())->filtro_usuario_nombre($nombre_usuario);
         
@@ -28,13 +34,11 @@ class Autentificacion {
     }
     
     public function verify() {
- 
-        if (isset($_SESSION["login"]) && ($_SESSION["login"]["roles"] == "admin" || $_SESSION["login"]["roles"] == "superadmin")) {
+        if (isset($_SESSION["login"]) && in_array($_SESSION["login"]["roles"], ["admin", "superadmin"])) {
             return true;
         } else {
             header("Location: ../index.php");
             exit;
         }
     }
-    
 }
