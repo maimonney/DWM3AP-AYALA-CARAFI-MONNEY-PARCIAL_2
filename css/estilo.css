@@ -204,7 +204,6 @@ h3 {
   padding: 10px 20px;
   border-radius: 30px;
   cursor: pointer;
-  width: 100%;
 }
 
 .btn_adm_cont a {
@@ -212,8 +211,25 @@ h3 {
   text-decoration: none;
 }
 
+.btntarjeta a {
+  background-color: #6d3279;
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btntarjeta:hover a{
+  background-color: #d38faf;
+}
+
 .btn:hover {
   background-color: #d38faf;
+  color: white;
 }
 
 .btn_compra {

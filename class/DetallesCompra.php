@@ -1,36 +1,24 @@
 <?php
-  class DetallesCompra{
+class DetallesCompra
+{
     protected $id_detalle;
     protected $carrito_id;
     protected $comic_id;
     protected $cantidad;
 
+    public function insert($carrito_id, $comic_id, $cantidad) {
+        $conexion = new Conexion();
+        $db = $conexion->getConexion();
 
-    public function __construct($carrito_id, $comic_id, $cantidad) {
-        $this->carrito_id = $carrito_id;
-        $this->comic_id = $comic_id;
-        $this->cantidad = $cantidad;
+        $query = "INSERT INTO `carrito_detalle` (`carrito_id`, `comic_id`, `cantidad`) VALUES (:carrito_id, :comic_id, :cantidad)";
+        $stmt = $db->prepare($query);
+        $stmt->execute([
+            ':carrito_id' => $carrito_id,
+            ':fecha_horario' => $comic_id,
+            ':cantidad' => $cantidad,
+        ]);
     }
 
-    public function guardarDetalleCompra() {
-        try {
-            $conexion = new Conexion();
-            $db = $conexion->getConexion();
-
-            $stmt = $db->prepare("INSERT INTO carrito_detalle (carrito_id, comic_id, cantidad) VALUES (:carrito_id, :comic_id, :cantidad)");
-            $stmt->execute([
-                ':carrito_id' => $this->carrito_id,
-                ':comic_id' => $this->comic_id,
-                ':cantidad' => $this->cantidad
-            ]);
-
-            return true;
-        } catch (PDOException $e) {
-            echo "Error al guardar detalle de compra: " . $e->getMessage();
-            return false;
-        }
-    }
-    
     /**
      * Get the value of id_detalle
      */
@@ -103,4 +91,4 @@
         return $this;
     }
 
-  }
+}
