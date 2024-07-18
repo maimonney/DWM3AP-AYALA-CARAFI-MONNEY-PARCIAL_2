@@ -1,9 +1,9 @@
 <section>
   <div class="contenedor_banner">
-  <div class="d-flex align-items-center justify-content-center row banner_1">
+    <div class="d-flex align-items-center justify-content-center row banner_1">
     <h2 class="col-8 text-start ms-5">Spider</h2>
     <img src="img/logo_spider.png" alt="" class="col-4">
-  </div>
+    </div>
 
   <div class="d-flex align-items-center personajes_h2">
 
