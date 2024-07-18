@@ -25,13 +25,13 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php?sec=carrito">Carrito</a>
+                    <a class="nav-link active" aria-current="page" href="index.php?sec=carritoViews">Carrito</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="index.php?sec=formulario">Contacto</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php?sec=UsuarioViews">Perfil</a>
+                    <a class="nav-link active" aria-current="page" href="index.php?sec=usuarioViews">Perfil</a>
                 </li>
             </ul>
         </div>

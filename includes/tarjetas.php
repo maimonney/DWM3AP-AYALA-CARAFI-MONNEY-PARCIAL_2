@@ -6,15 +6,11 @@ $comic = new Comic();
 $comics = $comic->catalogo_comic();
 ?>
 
-<div id="comic-container" class="d-flex justify-content-center m-5 row">
-    <!-- Las tarjetas de cómics se generarán aquí mediante JavaScript -->
-</div>
+<div id="comic-container" class="d-flex justify-content-center m-5 row"></div>
 
 <!-- Paginación -->
 <div aria-label="Page navigation">
-  <ul id="pagination" class="pagination justify-content-center">
-    <!-- Los botones de paginación se generarán aquí mediante JavaScript -->
-  </ul>
+  <ul id="pagination" class="pagination justify-content-center"></ul>
 </div>
 
 

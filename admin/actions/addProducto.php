@@ -6,5 +6,5 @@ $cantidad = $_POST["cantidad"] ?? 1;
 
 if($id){
     (new Carrito())->add_producto($id, $cantidad);
-    header("location: ../../index.php?sec=carrito");
+    header("location: ../../index.php?sec=carritoViews");
 }

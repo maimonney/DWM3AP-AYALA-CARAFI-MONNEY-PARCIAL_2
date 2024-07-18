@@ -6,6 +6,31 @@
     protected $cantidad;
 
 
+    public function __construct($carrito_id, $comic_id, $cantidad) {
+        $this->carrito_id = $carrito_id;
+        $this->comic_id = $comic_id;
+        $this->cantidad = $cantidad;
+    }
+
+    public function guardarDetalleCompra() {
+        try {
+            $conexion = new Conexion();
+            $db = $conexion->getConexion();
+
+            $stmt = $db->prepare("INSERT INTO carrito_detalle (carrito_id, comic_id, cantidad) VALUES (:carrito_id, :comic_id, :cantidad)");
+            $stmt->execute([
+                ':carrito_id' => $this->carrito_id,
+                ':comic_id' => $this->comic_id,
+                ':cantidad' => $this->cantidad
+            ]);
+
+            return true;
+        } catch (PDOException $e) {
+            echo "Error al guardar detalle de compra: " . $e->getMessage();
+            return false;
+        }
+    }
+    
     /**
      * Get the value of id_detalle
      */
@@ -78,42 +103,4 @@
         return $this;
     }
 
-    public function __construct($carrito_id, $comic_id, $cantidad) {
-        $this->carrito_id = $carrito_id;
-        $this->comic_id = $comic_id;
-        $this->cantidad = $cantidad;
-    }
-
-    public function guardarDetalleCompra() {
-        try {
-            $conexion = new Conexion();
-            $db = $conexion->getConexion();
-
-            $stmt = $db->prepare("INSERT INTO carrito_detalle (carrito_id, comic_id, cantidad) VALUES (:carrito_id, :comic_id, :cantidad)");
-            $stmt->execute([
-                ':carrito_id' => $this->carrito_id,
-                ':comic_id' => $this->comic_id,
-                ':cantidad' => $this->cantidad
-            ]);
-
-            return true;
-        } catch (PDOException $e) {
-            echo "Error al guardar detalle de compra: " . $e->getMessage();
-            return false;
-        }
-    }
-
-
-    // public function obtenerDetallesCompra($compra_id) {
-    //     try {
-    //         $conexion = new Conexion();
-    //         $db = $conexion->getConexion();
-    //         $stmt = $this->$db->prepare("SELECT * FROM detalle_compra WHERE compra_id = :compra_id");
-    //         $stmt->execute([':compra_id' => $compra_id]);
-    //         return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    //     } catch (PDOException $e) {
-    //         echo "Error al obtener detalles de compra: " . $e->getMessage();
-    //         return [];
-    //     }
-    // }
   }

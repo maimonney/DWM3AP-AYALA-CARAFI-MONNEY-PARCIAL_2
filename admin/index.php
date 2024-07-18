@@ -139,17 +139,16 @@ $vistasValidas = [
 ];
 
 if (array_key_exists($seccion, $vistasValidas)) {
-  $vistas = $seccion;
-    $titulo = $vistasValidas[$seccion]['titulo']; 
-    if($vistasValidas[$seccion]['restringido'] ){
-    (new Autentificacion ())->verify();
-   }
-   
+    $vistas = $seccion;
+    $titulo = $vistasValidas[$seccion]['titulo'];
+
+
+    if ($vistasValidas[$seccion]['restringido']) {
+        (new Autentificacion())->verify(); 
+    }
 } else {
-    $titulo = 'Pagina no encontrada';
+    $titulo = 'Página no encontrada';
 }
-
-
 ?>
 
 <!DOCTYPE html>

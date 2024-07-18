@@ -1,14 +1,24 @@
 <?php
 require_once "../../funciones/autoload.php";
 
-if (!empty($_POST["cantidad"])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST["cantidad"])) {
+    $miCarrito = new Carrito(); 
+
     $cantidades = $_POST["cantidad"];
-    (new Carrito())->actualizarCarrito($cantidades);
+
+    foreach ($cantidades as $id => $cantidad) {
+        if ((int)$cantidad === 0) {
+            $miCarrito->daleteProducto($id); 
+        } else {
+            $miCarrito->actualizarCarrito($cantidades);
+        }
+    }
+
     (new Alerta())->add_alerta("Carrito actualizado!", "success");
-    header("Location: ../../index.php?sec=carrito");
-    exit; 
+    header("Location: ../../index.php?sec=carritoViews");
+    exit;
 } else {
     (new Alerta())->add_alerta("Error al actualizar el carrito. No se recibieron cantidades válidas.", "danger");
-    header("Location: ../../index.php?sec=carrito");
+    header("Location: ../../index.php?sec=carritoViews");
     exit;
 }

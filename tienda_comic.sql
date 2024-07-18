@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-07-2024 a las 23:00:23
+-- Tiempo de generación: 18-07-2024 a las 19:02:41
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -58,7 +58,8 @@ INSERT INTO `autor` (`id_autor`, `nombre_autor`, `alias_autor`, `nacimiento_auto
 CREATE TABLE `carrito` (
   `id_carrito` int(10) UNSIGNED NOT NULL,
   `usuario_id` int(10) UNSIGNED NOT NULL,
-  `fecha_creacion` datetime NOT NULL
+  `fecha_creacion` datetime NOT NULL,
+  `total` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 -- --------------------------------------------------------
@@ -226,6 +227,15 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `email`, `nombre_usuario`, `nombre_completo`, `password`, `roles`) VALUES
+(18, 'mailen.monney@davinci.edu.ar', 'Mai', 'Mailen', '$2y$10$9tFXCfbAsaU.yfD0ZgsEruuvirBrUsEVcYkr6G.vaHCZhXhHV5AYy', 'admin'),
+(22, 'sofia.carafi@davinci.edu.ar', 'Sofi', 'Sofia', '$2y$10$B2TOT1Ks6Y8WM/eEMnecSuQjwqZhfmeNgK80Cd7BQtyqSoewBUb/G', 'usuario'),
+(23, 'daiana.ayala@davinci.edu.ar', 'Day', 'Daiana', '$2y$10$7bGrsWfFC01ILkZwT8DklOackm5tlzIODI9Gxbe32A0ZbpteuQiWS', 'superadmin');
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -315,7 +325,7 @@ ALTER TABLE `carrito`
 -- AUTO_INCREMENT de la tabla `carrito_detalle`
 --
 ALTER TABLE `carrito_detalle`
-  MODIFY `id_detalle` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_detalle` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `comic`
@@ -351,7 +361,7 @@ ALTER TABLE `universo`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Restricciones para tablas volcadas

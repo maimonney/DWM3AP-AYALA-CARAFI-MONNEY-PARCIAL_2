@@ -23,4 +23,9 @@ class Conexion {
     public function getConexion() {
         return $this->db;
     }
+
+    public function prepare($sql) {
+        return $this->db->prepare($sql);
+    }
 }
+?>

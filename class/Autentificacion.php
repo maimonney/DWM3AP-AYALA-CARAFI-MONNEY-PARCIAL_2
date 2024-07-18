@@ -17,8 +17,8 @@ class Autentificacion {
                     "nombre_usuario" => $usuario->getNombre_usuario(),
                     "nombre_completo" => $usuario->getNombre_completo(),
                     "email" => $usuario->getEmail(),
-                    "roles" => $usuario->getRoles(),
-                    "id" => $usuario->getId()
+                    "roles" => $usuario->getRoles(), 
+                    "usuario_id" => $usuario->getId()
                 ];
                 return true;
             }
@@ -42,3 +42,4 @@ class Autentificacion {
         }
     }
 }
+?>

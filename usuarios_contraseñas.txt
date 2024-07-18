@@ -1,4 +1,4 @@
-Usuarios - Contraseñas
-- usuario : usuario
-- admin : admin
-- superadmin : superadmin
+Usuarios - Contraseñas - Rol
+- Mai : 12345 : admin
+- Sofi : 12345 : usuario
+- Day : 12345 : superadmin

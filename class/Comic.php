@@ -14,12 +14,6 @@ class Comic
         public $bajada;
         public $universo_id_comic;
 
-        // protected static $contador = 0;
-
-        // public function __construct(){
-        //         echo "<h1> Cantidad: ".self::$contador."</h1>";
-        //         self::$contador++;
-        // }
 
         public function insert($serie_id_comic, $volumen_comic, $titulo_comic, $personaje_id_comic, $editorial_id_comic, $portada_comic, $publicacion_fecha, $autor_id_comic, $precio_comic, $bajada, $universo_id_comic)
         {
