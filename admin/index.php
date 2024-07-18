@@ -38,6 +38,10 @@ $vistasValidas = [
         'titulo' => 'Administracion de autores',
         'restringido' => true,
     ],
+    'adm_usuarios' => [
+        'titulo' => 'Administracion de ususarios',
+        'restringido' => true,
+    ],
     // Agregar
     'agregar_personaje' => [
         'titulo' => 'Agregar personaje',
@@ -88,6 +92,10 @@ $vistasValidas = [
         'titulo' => 'Borrar autor',
         'restringido' => true,
     ],
+    'borrar_usuario' => [
+        'titulo' => 'Borrar usuario',
+        'restringido' => true,
+    ],
     //    Editar
     'edit_personaje' => [
         'titulo' => 'Editar personaje',
@@ -113,6 +121,10 @@ $vistasValidas = [
         'titulo' => 'Editar autor',
         'restringido' => true,
     ],
+    'edit_usuario' => [
+        'titulo' => 'Editar usuario',
+        'restringido' => true,
+    ],
     // Login
     "login" => [
         "titulo" => "Login!",
@@ -127,17 +139,16 @@ $vistasValidas = [
 ];
 
 if (array_key_exists($seccion, $vistasValidas)) {
-  $vistas = $seccion;
-    $titulo = $vistasValidas[$seccion]['titulo']; 
-    if($vistasValidas[$seccion]['restringido'] ){
-    (new Autentificacion ())->verify();
-   }
-   
+    $vistas = $seccion;
+    $titulo = $vistasValidas[$seccion]['titulo'];
+
+
+    if ($vistasValidas[$seccion]['restringido']) {
+        (new Autentificacion())->verify(); 
+    }
 } else {
-    $titulo = 'Pagina no encontrada';
+    $titulo = 'Página no encontrada';
 }
-
-
 ?>
 
 <!DOCTYPE html>

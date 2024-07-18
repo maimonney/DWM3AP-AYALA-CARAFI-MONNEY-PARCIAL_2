@@ -1,14 +1,14 @@
 <?php
 require_once "../../funciones/autoload.php";
 
-$email =  $_POST["email"];
-$pass =  $_POST["pass"];
+$nombre_usuario = $_POST["nombre_usuario"];
+$password = $_POST["password"];
 
-$login = (new Autentificacion())->log_in($email, $pass);
+$login = (new Autentificacion())->log_in($nombre_usuario, $password);
 
-if($login){
+if ($login) {
     header("Location: ../index.php?sec=panelControl");
-}else{
+} else {
     (new Alerta())->add_alerta("Usuario o contraseña incorrecto", "danger");
     header("Location: ../index.php?sec=login");
 }

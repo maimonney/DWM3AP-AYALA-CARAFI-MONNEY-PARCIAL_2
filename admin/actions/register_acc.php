@@ -3,13 +3,16 @@ require_once "../../funciones/autoload.php";
 
 
 $email = $_POST["email"];
-$pass = $_POST["pass"];
+$nombre_usuario = $_POST["nombre_usuario"];
+$nombre_completo = $_POST["nombre"];
+$password = $_POST["password"];
+$roles = 'usuario';
+
 try {
-    $usuario = (new Usuario()) ->usuario_x_email($email);
+    $usuario = (new Usuario()) ->filtro_usuario_nombre($nombre_usuario);
   if($usuario){
-    //Mostrar una alerta
   } else{
-     (new Usuario())->insert( $email,$pass);
+     (new Usuario())->insert( $email, $nombre_usuario, $nombre_completo, $password, $roles);
   }
    
    header("Location:../index.php?sec=login");
