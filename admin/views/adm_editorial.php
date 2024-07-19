@@ -32,7 +32,7 @@ $editoriales = (new Editorial())->catalogo_editorial();
                                 <a href="index.php?sec=edit_editorial&id=<?= htmlspecialchars($editorial->getIdEditorial()) ?>"
                                     class="d-block btn btn-sm btn-warning mb-1">Editar</a>
                                 <a href="index.php?sec=borrar_editorial&id=<?= htmlspecialchars($editorial->getIdEditorial()) ?>"
-                                    class="d-block btn btn-sm btn-danger">Eliminar</a>
+                                    class="d-block btn btn-sm btn_eliminar">Eliminar</a>
                             </td>
                         </tr>
                     <?php } ?>

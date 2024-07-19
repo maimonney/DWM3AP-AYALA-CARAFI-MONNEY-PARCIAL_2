@@ -14,9 +14,20 @@ class DetallesCompra
         $stmt = $db->prepare($query);
         $stmt->execute([
             ':carrito_id' => $carrito_id,
-            ':fecha_horario' => $comic_id,
+            ':comic_id' => $comic_id,
             ':cantidad' => $cantidad,
         ]);
+    }
+
+    public function getDetallesCarrito($carrito_id) {
+        $conexion = new Conexion();
+        $db = $conexion->getConexion();
+
+        $query = "SELECT * FROM carrito_detalle WHERE carrito_id = :carrito_id";
+        $stmt = $db->prepare($query);
+        $stmt->execute([':carrito_id' => $carrito_id]);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     /**

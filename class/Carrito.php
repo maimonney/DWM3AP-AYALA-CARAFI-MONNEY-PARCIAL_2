@@ -7,6 +7,7 @@ class Carrito{
     protected $total;
 
     public function insert($usuario_id, $fecha_horario, $total) {
+        
         $conexion = new Conexion();
         $db = $conexion->getConexion();
 
@@ -17,6 +18,28 @@ class Carrito{
             ':fecha_horario' => $fecha_horario,
             ':total' => $total,
         ]);
+        $this->id_carrito = $db->lastInsertId();
+    }
+
+    public function insertarDetallesCompra(DetallesCompra $detallesCompra, $carrito_id) {
+        $productos = $this->get_carrito();
+
+        foreach ($productos as $id => $producto) {
+            $detallesCompra->insert($carrito_id, $producto['id_comic'], $producto['cantidad']);
+        }
+
+        $this->VaciarCarrito();
+    }
+
+    public function getCarritosUsuario($usuarioId) {
+        $conexion = new Conexion();
+        $db = $conexion->getConexion();
+
+        $query = "SELECT * FROM carrito WHERE usuario_id = :usuario_id";
+        $stmt = $db->prepare($query);
+        $stmt->execute([':usuario_id' => $usuarioId]);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function add_producto(int $productoID, int $cantidad)

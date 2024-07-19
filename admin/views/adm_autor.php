@@ -31,7 +31,7 @@ $autores = (new Autor())->catalogo_autor();
                                 <a href="index.php?sec=edit_autor&id=<?= htmlspecialchars($autor->getId()) ?>"
                                     class="d-block btn btn-sm btn-warning mb-1">Editar</a>
                                 <a href="index.php?sec=borrar_autor&id=<?= htmlspecialchars($autor->getId()) ?>"
-                                    class="d-block btn btn-sm btn-danger">Eliminar</a>
+                                    class="d-block btn btn-sm btn_eliminar">Eliminar</a>
                             </td>
                         </tr>
                     <?php } ?>

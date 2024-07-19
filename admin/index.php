@@ -42,6 +42,10 @@ $vistasValidas = [
         'titulo' => 'Administracion de ususarios',
         'restringido' => true,
     ],
+    'adm_carrito' => [
+        'titulo' => 'Administracion de carrito',
+        'restringido' => true,
+    ],
     // Agregar
     'agregar_personaje' => [
         'titulo' => 'Agregar personaje',
@@ -130,12 +134,12 @@ $vistasValidas = [
         "titulo" => "Login!",
         'restringido' => false,
     ],
-     
-     "register" => [
+
+    "register" => [
         "titulo" => "Registro de usuario",
         'restringido' => false,
     ]
-    
+
 ];
 
 if (array_key_exists($seccion, $vistasValidas)) {
@@ -144,7 +148,7 @@ if (array_key_exists($seccion, $vistasValidas)) {
 
 
     if ($vistasValidas[$seccion]['restringido']) {
-        (new Autentificacion())->verify(); 
+        (new Autentificacion())->verify();
     }
 } else {
     $titulo = 'Página no encontrada';
@@ -176,32 +180,35 @@ if (array_key_exists($seccion, $vistasValidas)) {
 
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
-                <?php if( isset($_SESSION["login"] )) {?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php?sec=panelControl">Panel de control</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="index.php?sec=panelControl" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">Modificar area:</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="index.php?sec=adm_personaje">Personajes</a></li>
-                            <li><a class="dropdown-item" href="index.php?sec=adm_comic">Comic</a></li>
-                            <li><a class="dropdown-item" href="index.php?sec=adm_serie">Series</a></li>
-                            <li><a class="dropdown-item" href="index.php?sec=adm_universo">Universo</a></li>
-                            <li><a class="dropdown-item" href="index.php?sec=adm_editorial">Editorial</a></li>
-                            <li><a class="dropdown-item" href="index.php?sec=adm_autor">Autor</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="actions/auth_logout.php">Salir</a>
-                    </li>
-                    <?php }else{ ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php?sec=login">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php?sec=register">Register</a>
-                    </li>
+                    <?php if (isset($_SESSION["login"])) { ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?sec=panelControl">Panel de control</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="index.php?sec=panelControl" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">Modificar area:</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="index.php?sec=adm_personaje">Personajes</a></li>
+                                <li><a class="dropdown-item" href="index.php?sec=adm_comic">Comic</a></li>
+                                <li><a class="dropdown-item" href="index.php?sec=adm_serie">Series</a></li>
+                                <li><a class="dropdown-item" href="index.php?sec=adm_universo">Universo</a></li>
+                                <li><a class="dropdown-item" href="index.php?sec=adm_editorial">Editorial</a></li>
+                                <li><a class="dropdown-item" href="index.php?sec=adm_autor">Autor</a></li>
+                                <?php if ($_SESSION["login"] && $_SESSION["login"]["roles"] === "superadmin") { ?>
+                                    <li><a class="dropdown-item" href="index.php?sec=adm_usuarios">Usuarios</a></li>
+                                <?php } ?>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="actions/auth_logout.php">Salir</a>
+                        </li>
+                    <?php } else { ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?sec=login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?sec=register">Register</a>
+                        </li>
                     <?php } ?>
                 </ul>
             </div>
