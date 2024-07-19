@@ -43,8 +43,8 @@ document.addEventListener("DOMContentLoaded", function() {
                         <li><strong>Precio:</strong> $${comic.precio_comic}</li>
                     </ul>
                 </div>
-                <div class="mb-3">
-                    <a href="index.php?sec=comic&id=${comic.id_comic}" class="btn mt-2">Ver más detalles</a>
+                <div class="mb-3 btntarjeta">
+                    <a href="index.php?sec=comic&id=${comic.id_comic}" class="btn mt-2 ">Ver más detalles</a>
                 </div>
             `;
 
