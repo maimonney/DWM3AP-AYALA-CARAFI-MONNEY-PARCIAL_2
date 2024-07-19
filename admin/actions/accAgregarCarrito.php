@@ -2,6 +2,8 @@
 require_once "../../funciones/autoload.php";
 
 try {
+    date_default_timezone_set('America/Argentina/Buenos_Aires');
+    
     $usuario_id = htmlspecialchars($_SESSION['login']['usuario_id']);
     $fecha_horario = date('Y-m-d H:i:s');
     $total = htmlspecialchars($_POST["total"]);
