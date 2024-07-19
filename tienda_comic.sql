@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-07-2024 a las 19:02:41
+-- Tiempo de generación: 20-07-2024 a las 01:12:32
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -58,9 +58,19 @@ INSERT INTO `autor` (`id_autor`, `nombre_autor`, `alias_autor`, `nacimiento_auto
 CREATE TABLE `carrito` (
   `id_carrito` int(10) UNSIGNED NOT NULL,
   `usuario_id` int(10) UNSIGNED NOT NULL,
-  `fecha_creacion` datetime NOT NULL,
+  `fecha_horario` datetime NOT NULL,
   `total` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `carrito`
+--
+
+INSERT INTO `carrito` (`id_carrito`, `usuario_id`, `fecha_horario`, `total`) VALUES
+(79, 22, '2024-07-19 21:14:32', 90000),
+(80, 22, '2024-07-19 21:17:26', 90000),
+(81, 22, '2024-07-19 22:46:33', 200000),
+(82, 22, '2024-07-19 22:47:23', 60000);
 
 -- --------------------------------------------------------
 
@@ -74,6 +84,19 @@ CREATE TABLE `carrito_detalle` (
   `comic_id` bigint(20) UNSIGNED NOT NULL,
   `cantidad` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `carrito_detalle`
+--
+
+INSERT INTO `carrito_detalle` (`id_detalle`, `carrito_id`, `comic_id`, `cantidad`) VALUES
+(24, 79, 21, 1),
+(25, 79, 20, 1),
+(26, 80, 20, 1),
+(27, 80, 21, 1),
+(28, 81, 21, 4),
+(29, 82, 17, 1),
+(30, 82, 23, 1);
 
 -- --------------------------------------------------------
 
@@ -233,7 +256,7 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`id`, `email`, `nombre_usuario`, `nombre_completo`, `password`, `roles`) VALUES
 (18, 'mailen.monney@davinci.edu.ar', 'Mai', 'Mailen', '$2y$10$9tFXCfbAsaU.yfD0ZgsEruuvirBrUsEVcYkr6G.vaHCZhXhHV5AYy', 'admin'),
 (22, 'sofia.carafi@davinci.edu.ar', 'Sofi', 'Sofia', '$2y$10$B2TOT1Ks6Y8WM/eEMnecSuQjwqZhfmeNgK80Cd7BQtyqSoewBUb/G', 'usuario'),
-(23, 'daiana.ayala@davinci.edu.ar', 'Day', 'Daiana', '$2y$10$7bGrsWfFC01ILkZwT8DklOackm5tlzIODI9Gxbe32A0ZbpteuQiWS', 'superadmin');
+(23, 'daiana.ayala@davinci.edu.ar', 'Day', 'Daiana', '$2y$10$PoR3c//OiDXUTtcMCmBQ2OMYKewSloXrHTEXiCoUP1eMnmQHgC1FS', 'superadmin');
 
 --
 -- Índices para tablas volcadas
@@ -319,13 +342,13 @@ ALTER TABLE `autor`
 -- AUTO_INCREMENT de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  MODIFY `id_carrito` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_carrito` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT de la tabla `carrito_detalle`
 --
 ALTER TABLE `carrito_detalle`
-  MODIFY `id_detalle` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_detalle` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `comic`
@@ -361,7 +384,7 @@ ALTER TABLE `universo`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Restricciones para tablas volcadas
