@@ -1,6 +1,6 @@
 <?php
 $id = $_GET["id"] ?? FALSE;
-$usuario = (new Usuario())->ususario_id($id);
+$usuario = (new Usuario())->usuario_id($id);
 ?> 
 
 <div class="d-flex">

@@ -211,6 +211,11 @@ h3 {
   text-decoration: none;
 }
 
+.btn_eliminar{
+  background-color: rgb(218, 57, 57);
+  width: 100%;
+}
+
 .btntarjeta a {
   background-color: #6d3279;
   display: flex;
@@ -364,8 +369,13 @@ strong {
   color: #b28ab9;
   text-shadow: 2px 3px 0 #6d3279;
 }
+.cont_panel_control h2 {
+  font-size: 3rem;
+  color: #efb4ce;
+  text-shadow: 2px 3px 0 #d38faf;
+}
 
-.panel_control h2 {
+.panel_control h3 {
   font-size: 3rem;
   text-shadow: none;
   color: #6d3279;
