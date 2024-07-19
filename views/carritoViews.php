@@ -4,19 +4,19 @@ require_once "./class/Alerta.php";
 
 $miCarrito = new Carrito();
 $productos = $miCarrito->get_carrito();
-$total = 0;
+$total = $miCarrito->calcularTotal();
 
-?>
+// echo '<pre>';
+// print_r ($miCarrito);
+// echo '</pre>';
 
-<script>
-    function actualizarCarrito() {
-        document.getElementById('actualizar_carrito').submit();
-    }
-</script>
+
+if(isset($_SESSION["login"])){ ?>
 
 <div class="cont_carrito">
     <div>
-        <h2 class="text-center fs-2 my-5"> Carrito de Compras</h2>
+        <h2 class="text-center fs-2 my-5"> Carrito de Compras de: <?php echo $_SESSION["login"]["nombre_usuario"]; ?>
+        </h2>
         <div class="container my-4">
             <?= (new Alerta())->get_alertas() ?>
 
@@ -36,7 +36,6 @@ $total = 0;
                         <tbody>
                             <?php foreach ($productos as $id => $producto) {
                                 $subtotal = $producto['precio'] * $producto["cantidad"];
-                                $total += $subtotal;
                                 ?>
                                 <tr>
                                     <td><img src="img/comic/<?= $producto["portada"] ?>"
@@ -64,15 +63,19 @@ $total = 0;
                         </tbody>
                     </table>
                 </form>
-
-                <div class="d-flex justify-content-end gap-2">
-                    <a class="btn" href="index.php?sec=todo">Seguir comprando</a>
-                    <a class="btn" href="admin/actions/VaciarCarrito.php">Vaciar Carrito</a>
-                    <div>
-                        <p>Total: <?= $total ?></p>
-                        <a class="btn btn-secondary" href="admin/actions/FinalizarCompra.php">Finalizar Compra</a>
+                <div class="d-flex justify-content-end align-items-center text-center gap-2">
+                    <div class="d-flex justify-content-end align-items-center text-center gap-2" style="width:30%; height:10px">
+                        <a class="btn" href="index.php?sec=todo" style="height:60px">Seguir comprando</a>
+                        <a class="btn" href="admin/actions/VaciarCarrito.php" style="height:60px">Vaciar Carrito</a>
+                    </div>
+                    <div class="d-flex justify-content-end align-items-center gap-2">
+                        <a class="btn" href="admin/actions/accAgregarCarrito.php" style="width:60%; height:60px">Finalizar Compra</a>
+                        <div style="width:80%">
+                        <p class="ms-4 fs-3">Total: <?= $total ?></p>
+                        </div>
                     </div>
                 </div>
+
 
             <?php } else { ?>
                 <div class="cont_carrito_h2">
@@ -83,3 +86,41 @@ $total = 0;
         </div>
     </div>
 </div>
+
+<?php } else { ?>
+
+<div class="text-center my-5">
+    <p>Inicia sesión para ver su carrito</p>
+    <a href="./admin/index.php?sec=login" class="btn btn-primary">Iniciar sesión</a>
+    <a href="./admin/index.php?sec=register" class="btn btn-secondary">Registrarse</a>
+</div>
+
+<?php } ?>
+
+<script>
+    function actualizarCarrito() {
+        document.getElementById('actualizar_carrito').submit();
+    }
+</script>
+
+<style>
+@media (max-width: 900px) {
+    .cont_carrito{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media (max-width: 500px) {
+    .cont_carrito{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .table{
+    display: flex;
+    flex-direction: column; 
+  }
+}
+
+</style>

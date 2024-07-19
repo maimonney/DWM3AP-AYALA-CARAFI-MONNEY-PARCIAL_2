@@ -23,18 +23,7 @@ $carrito = new Carrito();
                 </div>
                 <div>
                     <h5 class="card-subtitle mb-2 text-muted">Historial de compras</h5>
-                    <?php
-                    $historialCompras = $carrito->obtenerHistorialCompras($_SESSION["login"]["usuario_id"]);
-
-                    foreach ($historialCompras as $compra) {
-                        echo "<p><strong>Fecha:</strong> " . $compra['fecha_horario'] . "</p>";
-                        echo "<ul>";
-                        foreach ($compra['detalles'] as $detalle) {
-                            echo "<li>Nombre: " . $detalle['titulo_comic'] . ", Cantidad: " . $detalle['cantidad'] . ", Total: $" . ($detalle['cantidad'] * $detalle['precio_comic']) . "</li>";
-                        }
-                        echo "</ul>";
-                    }
-                    ?>
+                    
                 </div>
             </div>
             <div class="card-footer text-center">
@@ -54,3 +43,4 @@ $carrito = new Carrito();
 
     <?php } ?>
 </div>
+
